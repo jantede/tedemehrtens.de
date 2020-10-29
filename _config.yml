@@ -26,10 +26,14 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jantede
 
+paginate:		5
+paginate_path:	"/posts/page:num/"
+
 # Build settings
 theme: jekyll-theme-clean-blog
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 # Exclude from processing.
 # The following items will not be processed, by default.
