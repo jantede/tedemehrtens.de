@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Impressum
+permalink: /impressum/
 background: /assets/img/imprint-695764_1920.jpg
 ---
 <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
