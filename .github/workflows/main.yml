@@ -12,7 +12,7 @@ jobs:
       uses: docker://evaneos/ssh-action:0.1.0
       with:
         hosts: ${{ secrets.SSH_HOST }}
-        user: ${{ secrets.SSH_USER }}
+        user: tede
         private_key: ${{ secrets.SSH_PRIVKEY }}
         commands: | 
           cd /home/tede/tedemehrtens.de
