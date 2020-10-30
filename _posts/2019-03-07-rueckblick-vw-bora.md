@@ -2,6 +2,7 @@
 layout: post
 title: "Rückblick: VW Bora 1.6"
 background: /assets/img/posts/2018/03/IMG_2836-1.JPG
+tags: vw bora vwbora review
 ---
 Von Februar 2017 bis Oktober 2018 bin ich einen 1999er VW Bora 1.6 SR in canyonrot gefahren. Ein super schönes Auto! Ich möchte mal die Gelegenheit nutzen, über das zu schreiben, was mir gefallen hat, was mir nicht so gefallen hat und warum ich den Wagen nach der kurzen Zeit schon wieder losgeworden bin.
 
