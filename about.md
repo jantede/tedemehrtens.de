@@ -4,8 +4,15 @@ title: Über Mich
 permalink: /about/
 background: /assets/img/posts/2018/03/IMG_0970-1-.JPG
 ---
+{% assign today = site.time | date: '%s' %}
+{% assign start = '27-11-1997' | date: '%s' %}
+{% assign secondsSince = today | minus: start %}
+{% assign hoursSince = secondsSince | divided_by: 60 | divided_by: 60 %}
+{% assign daysSince = hoursSince | divided_by: 24 %}
+{% assign yearsSince = daysSince | divided_by: 365 %}
+
 # Mein Werdegang
-Ich bin Tede, derzeit <span id="age">22</span> Jahre alt und komme aus einer kleinen Stadt bei Bremen. Schon früh habe ich mich für Technik begeistert, alles mögliche auseinandergeschraubt und zu verstehen versucht. Mit 13 Jahren (ja, stimmt wirklich, werde ich oft gefragt) habe ich angefangen, Webseiten zu basteln und bin relativ schnell in die Programmierung gerutscht, die ich bis heute aktiv betreibe.
+Ich bin Tede, derzeit {{yearsSince}} Jahre alt und komme aus einer kleinen Stadt bei Bremen. Schon früh habe ich mich für Technik begeistert, alles mögliche auseinandergeschraubt und zu verstehen versucht. Mit 13 Jahren (ja, stimmt wirklich, werde ich oft gefragt) habe ich angefangen, Webseiten zu basteln und bin relativ schnell in die Programmierung gerutscht, die ich bis heute aktiv betreibe.
 
 Mit 19 Jahren habe ich mein Abitur in Niedersachsen erworben und nach 4 Monaten Pause dann angefangen, bei der Deutschen Telekom dual das Fach "Kommunikations- und Medieninformatik" zu studieren. Dieses Studium schließe ich voraussichtlich Ende 2020 ab und werde dann weiter bei der Telekom arbeiten. Meine Tätigkeit besteht schwerpunktmäßig aus Netzbetrieb (insb. Firewalls) und der Teilautomatisierung dessen, womit ich meine selbst mitgebrachten Programmierkenntnisse mit der neu entwickelten Leidenschaft für IP-Netze kombinieren kann.
 
