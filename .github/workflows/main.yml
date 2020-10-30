@@ -7,7 +7,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    needs: [build]
     steps:
     - name: Update website to master on webserver
       uses: docker://evaneos/ssh-action:0.1.0
