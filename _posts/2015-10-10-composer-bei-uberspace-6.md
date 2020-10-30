@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Composer bei Uberspace 6"
+tags: composer uberspace php uberspace6
 ---
 *Hinweis: Dieser Artikel kommt aus dem Archiv*
 
