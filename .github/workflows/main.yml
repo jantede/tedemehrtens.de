@@ -17,6 +17,6 @@ jobs:
         commands: | 
           cd /home/tede/tedemehrtens.de
           git pull
-          bundle install
+          bundle install --path vendor/bundle
           bundle exec jekyll build -d /var/www/virtual/$USER/html
                 
