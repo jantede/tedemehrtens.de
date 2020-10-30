@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Run a command remotely
+      uses: docker://evaneos/ssh-action:0.1.0
+      with:
+        hosts: ${{ secrets.SSH_HOST }}
+        user: ${{ secrets.SSH_USER }}
+        private_key: ${{ secrets.SSH_PRIVKEY }}
+        commands: | 
+          cd /home/tede/tedemehrtens.de
+          git pull
+          bundle install
+          bundle exec jekyll build -d /var/www/virtual/$USER/html
+                
