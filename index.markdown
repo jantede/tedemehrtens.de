@@ -2,7 +2,7 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 title: Willkommen
-layout: page
+layout: home
 background: /assets/img/peak-5645235_1920.jpg
 ---
 
