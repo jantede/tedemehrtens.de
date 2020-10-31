@@ -28,7 +28,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jantede
 github_username: jantede
 
-paginate:		5
+paginate:		2
 paginate_path:	"/posts/page:num/"
 
 # Build settings

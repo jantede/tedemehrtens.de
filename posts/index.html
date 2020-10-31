@@ -1,0 +1,36 @@
+---
+title: Mein Blog
+layout: page
+permalink: /posts/
+---
+{% for post in paginator.posts %}
+
+<a class="card" href="{{post.url}}">
+    <img class="card-img-top" src="{{post.background}}">
+    <div class="card-body">
+        <h4 class="card-title">{{post.title}}</h4>
+        <p class="card-text">{{post.excerpt}}</p>
+    </div>
+</a>
+
+<hr>
+
+{% endfor %}
+
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+
+<div class="clearfix">
+
+    {% if paginator.previous_page %}
+    <a class="btn btn-primary float-left" href="{{ paginator.previous_page_path }}">&larr;
+        Ältere <span class="d-none d-md-inline"> Beiträge</span></a>
+    {% endif %}
+
+    {% if paginator.next_page %}
+    <a class="btn btn-primary float-right" href="{{ paginator.next_page_path }}">Neuere <span class="d-none d-md-inline"> Beiträge</span> &rarr;</a>
+    {% endif %}
+
+</div>
+
+{% endif %}
