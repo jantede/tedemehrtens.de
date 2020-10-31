@@ -20,6 +20,7 @@
 
 title: Tede Mehrtens
 email: kontakt@tedemehrtens.de
+author: Jan Tede Mehrtens
 description: >- # this means to ignore newlines until "baseurl:"
   Blub
 baseurl: "" # the subpath of your site, e.g. /blog
