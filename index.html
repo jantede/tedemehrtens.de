@@ -1,0 +1,36 @@
+---
+title: ❤️lich Willkommen
+layout: home
+background: /assets/img/IMG_20200627_223549.jpg
+---
+<div class="section text-center">
+    <h1>Made in Norddeutschland</h1>
+    <h5 class="description">
+        Moin, mein Name ist Tede. Ich bin Informatiker aus dem Norden des Landes. Auf dieser Seite findest
+        du hoffentlich etwas, was du gebrauchen kannst.
+    </h5>
+    <a href="/about" class="btn btn-primary">Informationen über mich</a>
+    <a href="/posts" class="btn btn-info">Mein Blog</a>
+</div>
+<div class="section section-components section-black">
+    <div class="container" style="color: #b4b4b4">
+        <h1 class="text-center">Neues aus meinem Blog</h1>
+        <div class="row">
+            {% for post in site.posts limit:3 %}
+            <div class="col-md-4">
+                <a class="card" href="{{post.url}}">
+                    <img class="card-img-top" src="{{post.background}}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{post.title}}</h4>
+                        <p class="card-text">{{post.excerpt}}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="text-center">
+            <a class="btn btn-primary" href="/posts">Alle Beiträge anzeigen</a>
+        </div>
+    </div>
+</div>
