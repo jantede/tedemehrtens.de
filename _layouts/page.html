@@ -1,6 +1,6 @@
 {% include header.html %}
 
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{page.background}}');height:50vh">
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{% if page.background %}{{page.background}}{% else %}/assets/img/peak-5645235_1920.jpg{% endif %}');height:35vh">
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">

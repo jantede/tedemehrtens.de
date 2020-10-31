@@ -1,26 +1,34 @@
-<nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg"  color-on-scroll="100">
+<nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="/">
                 {{site.title}} </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
                 <span class="navbar-toggler-icon"></span>
                 <span class="navbar-toggler-icon"></span>
             </button>
-
         </div>
-
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="https://github.com/jantede/tedemehrtens.de/blob/master/{{page.path}}" class="nav-link">
-                        <i class="material-icons">create</i>
-                    </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for item in site.data.navigation %}
+                <li class="nav-item{% if page.url == item.link %} active{% endif %}">
+                    <a class="nav-link" href="{{ item.link }}">{{ item.name }}{% if page.url == item.link %} <span
+                            class="sr-only">(aktuell)</span>{% endif %}</a>
                 </li>
+                {% endfor %}
             </ul>
         </div>
+
+        <ul class="navbar-nav ml-auto show d-none d-lg-block d-xl-none">
+            <li class="nav-item">
+                <a href="https://github.com/jantede/tedemehrtens.de/blob/master/{{page.path}}" class="nav-link">
+                    <i class="material-icons">create</i>
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
