@@ -19,7 +19,7 @@ background: /assets/img/IMG_20200627_223549.jpg
             {% for post in site.posts limit:3 %}
             <div class="col-md-4">
                 <a class="card" href="{{post.url}}">
-                    <img class="card-img-top" src="{{post.background}}">
+                    <img class="card-img-top" src="{{post.background}}" style="height:25vh;object-fit:cover">
                     <div class="card-body">
                         <h4 class="card-title">{{post.title}}</h4>
                         <p class="card-text">{{post.excerpt}}</p>
