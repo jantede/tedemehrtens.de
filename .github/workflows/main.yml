@@ -16,7 +16,7 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: tede
         key: ${{ secrets.SSH_PRIVKEY }}
-        commands: | 
+        script: | 
           cd /home/tede/tedemehrtens.de
           git pull
           bundle install --path vendor/bundle
