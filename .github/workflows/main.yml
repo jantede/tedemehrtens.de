@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Update website to master on webserver
-      uses: docker://evaneos/ssh-action:0.1.0
+      uses: appleboy/ssh-action@v1
       with:
-        hosts: ${{ secrets.SSH_HOST }}
-        user: tede
-        private_key: ${{ secrets.SSH_PRIVKEY }}
+        host: ${{ secrets.SSH_HOST }}
+        username: tede
+        key: ${{ secrets.SSH_PRIVKEY }}
         commands: | 
           cd /home/tede/tedemehrtens.de
           git pull
