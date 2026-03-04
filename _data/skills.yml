@@ -1,10 +1,9 @@
-- category: Networking
+- category: Datacenter
   items:
+    - Data Backup & Restore
     - Firewalls
     - IP Networks
-    - Network Automation
-    - BGP
-    - OSPF
+    - Automation
 
 - category: Tools & Platforms
   items:
@@ -17,4 +16,4 @@
   items:
     - Python
     - Bash
-    - Jekyll
+    - PHP
