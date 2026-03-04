@@ -10,7 +10,7 @@
 
       <header class="post-header">
         {% if page.tags.size > 0 %}
-        <div class="post-tags">{% for tag in page.tags %}<span class="post-tag">#{{ tag }}</span>{% endfor %}</div>
+        <div class="post-tags">{% for tag in page.tags %}<a class="post-tag" href="/tags/{{ tag }}/">#{{ tag }}</a>{% endfor %}</div>
         {% endif %}
         <h1 class="post-title">{{ page.title }}</h1>
         <div class="post-meta-row">
@@ -46,7 +46,7 @@
           {% for post in related %}
           <a href="{{ post.url }}" class="post-related-card">
             {% if post.tags.size > 0 %}
-            <div class="post-tags post-related-tags">{% for tag in post.tags %}<span class="post-tag">#{{ tag }}</span>{% endfor %}</div>
+            <div class="post-tags post-related-tags">{% for tag in post.tags %}<a class="post-tag" href="/tags/{{ tag }}/">#{{ tag }}</a>{% endfor %}</div>
             {% endif %}
             <p class="post-related-title">{{ post.title }}</p>
             <p class="post-related-date">{{ post.date | date: "%b %-d, %Y" }}</p>

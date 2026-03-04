@@ -701,8 +701,14 @@ button { font-family: inherit; }
   font-size: 0.825rem;
   font-weight: 500;
   color: var(--accent);
-  cursor: default;
-  user-select: none;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.post-tag:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .post-title {
@@ -877,6 +883,19 @@ button { font-family: inherit; }
   color: var(--text-muted);
 }
 
+/* === TAG PAGE === */
+.tag-page-heading {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+}
+
+.tag-page-hash {
+  color: var(--accent);
+}
+
 /* === POSTS LIST PAGE === */
 .posts-page {
   padding-top: calc(var(--nav-height) + 3rem);
@@ -896,9 +915,6 @@ button { font-family: inherit; }
   align-items: flex-start;
   padding: 1.1rem 0;
   border-bottom: 1px solid var(--border);
-  text-decoration: none;
-  color: var(--text);
-  transition: color var(--transition);
 }
 
 .posts-list-item:first-child {
@@ -922,10 +938,12 @@ button { font-family: inherit; }
 .post-item-title {
   font-size: 0.95rem;
   font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
   transition: color var(--transition);
 }
 
-.posts-list-item:hover .post-item-title {
+.post-item-title:hover {
   color: var(--accent);
 }
 
