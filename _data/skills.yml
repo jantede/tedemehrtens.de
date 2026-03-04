@@ -1,0 +1,19 @@
+- category: Datacenter
+  items:
+    - Data Backup & Restore
+    - Firewalls
+    - IP Networks
+    - Automation
+
+- category: Tools & Platforms
+  items:
+    - Veeam
+    - Linux
+    - Git
+    - Docker
+
+- category: Programming
+  items:
+    - Python
+    - Bash
+    - PHP

@@ -1,19 +1,31 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <!--  Fonts and icons  -->
-    <!-- Fonts and icons -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.title != site.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="author" content="{{ site.author }}">
 
-    <!-- Material Kit CSS -->
-    <link href="/assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
+  <!-- Apply saved theme before first paint to prevent flash -->
+  <script>
+    (function() {
+      var s = localStorage.getItem('theme');
+      var p = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = s || p;
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/assets/css/portfolio.css">
+
+  <!-- Feed -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
 </head>
 <body>
 {% include navbar.html %}
-
