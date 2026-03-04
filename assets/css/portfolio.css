@@ -342,18 +342,33 @@ button { font-family: inherit; }
   margin-bottom: 5rem;
 }
 
-/* On mobile: full-width text, stronger overlay */
+/* On mobile: text anchored to bottom so it doesn't cover the face */
 @media (max-width: 640px) {
+  .hero {
+    align-items: flex-end;
+  }
+
   .hero::after {
-    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.4)  50%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
   }
 
   .hero .container {
     justify-content: flex-start;
+    padding-bottom: 3rem;
   }
 
   .hero-inner {
     width: 100%;
+    padding: 0;
+  }
+
+  .hero-actions {
+    margin-bottom: 2rem;
   }
 }
 
