@@ -44,6 +44,11 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
+# _headers starts with _ so Jekyll excludes it by default — explicitly include it
+# so Cloudflare Workers Static Assets can find it in _site/
+include:
+  - _headers
+
 exclude:
   - _archive/
   - .sass-cache/
@@ -51,3 +56,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor/
+  - wrangler.toml
