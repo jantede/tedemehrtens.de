@@ -817,9 +817,64 @@ button { font-family: inherit; }
 }
 
 .post-footer {
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* === RELATED POSTS === */
+.post-related {
   padding-top: 3rem;
   margin-top: 3rem;
   border-top: 1px solid var(--border);
+}
+
+.post-related-heading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.post-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.post-related-card {
+  display: block;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.post-related-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.post-related-tags {
+  margin-bottom: 0.5rem;
+}
+
+.post-related-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.post-related-date {
+  font-size: 0.775rem;
+  color: var(--text-muted);
 }
 
 /* === POSTS LIST PAGE === */
