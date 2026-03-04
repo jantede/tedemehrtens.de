@@ -1,4 +1,6 @@
-- name: Home
-  link: /
-- name: Über mich
-  link: /about/
+- name: About
+  link: /#about
+- name: Experience
+  link: /#experience
+- name: Skills
+  link: /#skills

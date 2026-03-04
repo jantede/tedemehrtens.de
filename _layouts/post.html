@@ -1,29 +1,13 @@
 {% include header.html %}
-
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{% if page.background %}{{page.background}}{% else %}/assets/img/IMG_20200627_223549.jpg{% endif %}');height:50vh">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-                <div class="brand text-center">
-                    <h1>{{page.title}}</h1>
-                    <h3 class="title text-center">{{page.subtitle}}</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="main main-raised">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section">
-                    {{content}}
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
+<main>
+  <div class="container">
+    <header class="post-header">
+      <h1>{{ page.title }}</h1>
+      <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+    </header>
+    <article class="post-body">
+      {{ content }}
+    </article>
+  </div>
+</main>
 {% include footer.html %}

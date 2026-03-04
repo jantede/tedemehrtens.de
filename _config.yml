@@ -22,7 +22,7 @@ title: Tede Mehrtens
 email: kontakt@tedemehrtens.de
 author: Jan Tede Mehrtens
 description: >- # this means to ignore newlines until "baseurl:"
-  Blub
+  Informatiker aus dem Norden. Senior Systems Engineer bei Veeam. Technik, Netze und gelegentlich ein Blogpost.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jantede

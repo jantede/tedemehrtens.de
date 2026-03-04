@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Über Mich
+title: About
 permalink: /about/
-background: /assets/img/posts/2018/03/IMG_0970-1-.JPG
 ---
+
 {% assign today = site.time | date: '%s' %}
 {% assign start = '27-11-1997' | date: '%s' %}
 {% assign secondsSince = today | minus: start %}
@@ -11,22 +11,18 @@ background: /assets/img/posts/2018/03/IMG_0970-1-.JPG
 {% assign daysSince = hoursSince | divided_by: 24 %}
 {% assign yearsSince = daysSince | divided_by: 365 %}
 
-# Mein Werdegang
-Ich bin Tede, derzeit {{yearsSince}} Jahre alt und komme aus einer kleinen Stadt bei Bremen. Schon früh habe ich mich für Technik begeistert, alles mögliche auseinandergeschraubt und zu verstehen versucht. Mit 13 Jahren (ja, stimmt wirklich, werde ich oft gefragt) habe ich angefangen, Webseiten zu basteln und bin relativ schnell in die Programmierung gerutscht, die ich bis heute aktiv betreibe.
+I'm Tede, {{yearsSince}} years old and from a small town near Bremen in northern Germany.
+I've been fascinated by technology from an early age — taking things apart, trying to understand how they work.
+I started building websites at 13 and quickly got into programming, which I continue to enjoy to this day.
 
-Mit 19 Jahren habe ich mein Abitur in Niedersachsen erworben und nach 4 Monaten Pause dann angefangen, bei der Deutschen Telekom dual das Fach "Kommunikations- und Medieninformatik" zu studieren. Dieses Studium schließe ich voraussichtlich Ende 2020 ab und werde dann weiter bei der Telekom arbeiten. Meine Tätigkeit besteht schwerpunktmäßig aus Netzbetrieb (insb. Firewalls) und der Teilautomatisierung dessen, womit ich meine selbst mitgebrachten Programmierkenntnisse mit der neu entwickelten Leidenschaft für IP-Netze kombinieren kann.
+I completed a dual study programme in Communications & Media Informatics at Deutsche Telekom in November 2020.
+After graduating, I worked on a firewall automation project at Telekom — a good combination of network engineering and programming.
 
-_Fortsetzung folgt..._
+Since March 2023 I've been working at [Veeam](https://www.veeam.com) as a Systems Engineer,
+and since April 2025 as Senior Systems Engineer.
 
-# Diese Webseite
-Diese Webseite betreibe ich seit 2014, die aktuelle Form besteht seit Anfang 2019. Anfangs hatte ich die tolle Idee, zu bloggen, um dann festzustellen, dass ich eigentlich gar nicht so viel Zeit habe. Deshalb betrachte ich diese Seite als "Visitenkarte" und Archiv für mich selbst, wo ich einige Sachen dokumentieren kann, um sie später mal nachzuschlagen.
+---
 
-## Die Technik
-Anfangs habe ich diese Webseite auf einem Free Webspace mit Wordpress betrieben (Ich war jung und hatte kein Geld), was aber mittlerweile in meinen Augen einfach viel zu überladen und langsam ist. Auf der Suche nach einem schlankeren System bin ich 2019 auf _Ghost_ gestoßen und habe Wordpress zu dessen Gunsten rausgeschmissen. Ghost ist ein wirklich viel entspannteres System als Wordpress, deutlich schlanker, mit schöner Benutzeroberfläche und Markdown-Support. Ich kann jedem Wordpress-Nutzer empfehlen, da mal reinzuschauen.
-
-Stand heute realisiere ich die Seite mit Jekyll und Git. Dabei generiert Jekyll aus meinem Git-Repo statische HTML-Files, die dann auf einen Webserver synchronisiert werden. Somit entsteht kaum noch Overhead und die Seite ist schön schnell. Wenn du dich dafür interessierst, schau doch mal bei [Github](https://github.com/jantede/tedemehrtens.de) vorbei.
-
-## Danksagungen
-[![Uberspace](/assets/img/posts/2018/03/badge-white-7f82570007ed59abd3ec5255a0824e217347d2e3.png)](https://uberspace.de)
-
-An dieser Stelle möchte ich mein Dankeschön an Uberspace aussprechen, auf deren Service diese Seite betrieben wird. Es gibt nur wenige Hoster, die einem so unbeschränkten Zugang zur CLI geben und es einem so ermöglichen, der Kreativität freien Lauf zu lassen. Klickt doch oben mal auf das Bild und schaut bei den Ubernauten vorbei :-)
+This website has been running in various forms since 2014.
+It's built with [Jekyll](https://jekyllrb.com) and hosted on [Uberspace](https://uberspace.de).
+The source is on [GitHub](https://github.com/jantede/tedemehrtens.de).

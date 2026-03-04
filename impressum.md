@@ -2,7 +2,6 @@
 layout: page
 title: Impressum
 permalink: /impressum/
-background: /assets/img/imprint-695764_1920.jpg
 ---
 <h2 id="m46">Diensteanbieter</h2>
 <p>Jan Tede Mehrtens</p>

@@ -1,0 +1,20 @@
+- category: Networking
+  items:
+    - Firewalls
+    - IP Networks
+    - Network Automation
+    - BGP
+    - OSPF
+
+- category: Tools & Platforms
+  items:
+    - Veeam
+    - Linux
+    - Git
+    - Docker
+
+- category: Programming
+  items:
+    - Python
+    - Bash
+    - Jekyll
