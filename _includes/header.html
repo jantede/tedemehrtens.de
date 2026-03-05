@@ -17,10 +17,17 @@
     })();
   </script>
 
-  <!-- Fonts -->
+  <!-- Preload critical image if specified by the page -->
+  {% if page.preload_image %}
+  <link rel="preload" as="image" href="{{ page.preload_image }}" type="image/webp">
+  {% endif %}
+
+  <!-- Fonts: preconnect + async load to avoid render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/assets/css/portfolio.css?v={{ site.time | date: '%s' }}">

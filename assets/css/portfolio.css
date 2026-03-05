@@ -268,7 +268,11 @@ button { font-family: inherit; }
   align-items: center;
   padding-top: var(--nav-height);
   position: relative;
-  background-image: url('/assets/img/IMG_1249.jpeg');
+  background-image: url('/assets/img/IMG_1249.jpeg'); /* fallback */
+  background-image: image-set(
+    url('/assets/img/IMG_1249.webp') type('image/webp'),
+    url('/assets/img/IMG_1249.jpeg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: left center;
   background-repeat: no-repeat;
@@ -872,13 +876,10 @@ button { font-family: inherit; }
 }
 
 .post-related-card {
-  display: block;
   padding: 1.1rem 1.25rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  text-decoration: none;
-  color: var(--text);
   transition: border-color var(--transition), transform var(--transition);
 }
 
@@ -896,7 +897,15 @@ button { font-family: inherit; }
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 0.4rem;
+}
+
+.post-related-title a {
   color: var(--text);
+  text-decoration: none;
+}
+
+.post-related-card:hover .post-related-title a {
+  color: var(--accent);
 }
 
 .post-related-date {
