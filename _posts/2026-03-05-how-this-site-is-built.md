@@ -103,5 +103,3 @@ The whole thing costs nothing and will keep working as long as Cloudflare exists
 If you're a developer or otherwise technically interested person running your blog on WordPress, I genuinely encourage you to look at this approach. The initial setup takes a few hours. After that you just write, push, and it's alive. No updates to apply, no server to babysit, no 3am "your site is down" emails.
 
 Maybe this is just me being extravagant, but given the headaches Wordpress caused me (and I know this is true to some of you as well) - I clearly prefer running a Git repo. I know which one I'd rather maintain.
-
-The source for this site is on [GitHub](https://github.com/jantede/tedemehrtens.de) if you want to take a look.
