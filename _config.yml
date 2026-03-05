@@ -35,6 +35,15 @@ paginate_path:	"/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-webp
+
+webp:
+  enabled:    true
+  quality:    82          # matches our manual cwebp conversion
+  img_dir:    ["/assets/img"]
+  nested:     true        # also convert images in subdirectories
+  formats:    [".jpeg", ".jpg", ".png"]
+  regenerate: false       # skip if .webp already exists (faster rebuilds)
 
 # Exclude from processing.
 # The following items will not be processed, by default.
