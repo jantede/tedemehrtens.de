@@ -81,6 +81,7 @@ GEM
       sass-embedded (~> 1.75)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
+    jekyll-webp (1.0.0)
     json (2.18.1)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
@@ -167,6 +168,7 @@ DEPENDENCIES
   jekyll (~> 4.4)
   jekyll-feed (~> 0.17)
   jekyll-paginate
+  jekyll-webp
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
