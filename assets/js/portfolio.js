@@ -59,8 +59,8 @@ document.addEventListener('mouseleave', () => {
   if (!canvas) return;
 
   const ctx       = canvas.getContext('2d');
-  const N         = 45;
-  const MAX_EDGE  = 130;
+  const N         = 100;
+  const MAX_EDGE  = 100;
   const REVEAL_R  = 190;
   const GHOST_NODE = 0.05;
   const GHOST_EDGE = 0.03;
