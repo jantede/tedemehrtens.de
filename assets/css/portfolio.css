@@ -289,7 +289,7 @@ button { font-family: inherit; }
   z-index: 0;
 }
 
-/* Canvas sits above the dark overlay, below the text */
+/* Canvas sits above the dark overlay, below the text — desktop only */
 .hero-canvas {
   position: absolute;
   inset: 0;
@@ -297,6 +297,10 @@ button { font-family: inherit; }
   height: 100%;
   z-index: 1;
   pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .hero-canvas { display: none; }
 }
 
 .hero .container {

@@ -53,10 +53,11 @@ document.addEventListener('mouseleave', () => {
   document.body.style.setProperty('--mouse-y', '-999px');
 });
 
-// === Hero constellation ===
+// === Hero constellation (desktop only) ===
 (function () {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
+  if (window.matchMedia('(max-width: 639px)').matches) return;
 
   const ctx       = canvas.getContext('2d');
   const N         = 100;
