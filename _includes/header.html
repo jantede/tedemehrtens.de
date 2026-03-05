@@ -10,9 +10,10 @@
   <!-- Apply saved theme before first paint to prevent flash -->
   <script>
     (function() {
-      var s = localStorage.getItem('theme');
-      var p = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.dataset.theme = s || p;
+      var mode = localStorage.getItem('theme-mode') || 'auto';
+      var sys  = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.themeMode = mode;
+      document.documentElement.dataset.theme     = (mode === 'auto') ? sys : mode;
     })();
   </script>
 

@@ -1,23 +1,38 @@
 /* portfolio.js — theme toggle, spotlight, mobile nav */
 
-// === Theme ===
-const html   = document.documentElement;
-const toggle = document.getElementById('theme-toggle');
+// === Theme (3-state: auto → light → dark → auto) ===
+const html  = document.documentElement;
+const sysMQ = window.matchMedia('(prefers-color-scheme: dark)');
+const CYCLE = ['auto', 'light', 'dark'];
 
-function applyTheme(theme) {
-  html.dataset.theme = theme;
-  localStorage.setItem('theme', theme);
+function resolveTheme(mode) {
+  return mode === 'auto' ? (sysMQ.matches ? 'dark' : 'light') : mode;
 }
 
+function applyMode(mode) {
+  html.dataset.themeMode = mode;
+  html.dataset.theme     = resolveTheme(mode);
+  if (mode === 'auto') {
+    localStorage.removeItem('theme-mode');
+  } else {
+    localStorage.setItem('theme-mode', mode);
+  }
+}
+
+const toggle = document.getElementById('theme-toggle');
 if (toggle) {
   toggle.addEventListener('click', () => {
-    applyTheme(html.dataset.theme === 'dark' ? 'light' : 'dark');
+    const current = html.dataset.themeMode || 'auto';
+    const next    = CYCLE[(CYCLE.indexOf(current) + 1) % CYCLE.length];
+    applyMode(next);
   });
 }
 
-// System theme changes
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-  if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light');
+// Live-follow system preference when in auto mode
+sysMQ.addEventListener('change', (e) => {
+  if ((html.dataset.themeMode || 'auto') === 'auto') {
+    html.dataset.theme = e.matches ? 'dark' : 'light';
+  }
 });
 
 // === Mouse spotlight (throttled via rAF) ===
