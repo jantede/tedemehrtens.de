@@ -1,11 +1,13 @@
-# Security headers + compression hint for all routes
+# Security headers for all routes
+# Note: Vary: Accept-Encoding is intentionally omitted — Cloudflare adds it
+# automatically when applying gzip/Brotli compression. Setting it manually
+# here would signal to Cloudflare that the origin handles encoding itself,
+# which disables its automatic compression.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Vary: Accept-Encoding
-  Cache-Control: public, max-age=0, must-revalidate
 
 # Versioned assets: 1 year immutable (safe — cache-busted via ?v= query param)
 /assets/css/*
