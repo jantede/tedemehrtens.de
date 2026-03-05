@@ -1,6 +1,5 @@
 name = "portfolio"
 compatibility_date = "2026-03-04"
-workers_dev        = false   # don't expose on *.workers.dev subdomain
 
 [assets]
 directory          = "./_site"
