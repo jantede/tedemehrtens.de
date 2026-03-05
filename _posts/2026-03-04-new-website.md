@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "Something happened here, finally"
+title: Something happened here, finally
 date: 2026-03-04 13:00:00 +0100
-description: "Quick update about the new webpage"
-tags: [self, jekyll]
+description: Quick update about the new webpage
+tags:
+  - meta
+  - personal
 ---
 
 It's already been 6 years since the last time I posted here and it was about time to give this whole page a makeover. The last version of this site was mainly focused on this blog which I then never actually wrote for (whoops).
