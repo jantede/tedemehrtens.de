@@ -1,18 +1,7 @@
 name               = "portfolio"
 compatibility_date = "2026-03-04"
-workers_dev        = false   # production: no *.workers.dev exposure
 
 [assets]
 directory          = "./_site"
 not_found_handling = "404-page"           # serves 404.html for unknown routes
 html_handling      = "auto-trailing-slash" # /posts and /posts/ both work
-
-# Preview environment — deployed on pull requests via wrangler deploy --env preview
-# Accessible at: portfolio-preview.<subdomain>.workers.dev
-[env.preview]
-workers_dev = true
-
-[env.preview.assets]
-directory          = "./_site"
-not_found_handling = "404-page"
-html_handling      = "auto-trailing-slash"
