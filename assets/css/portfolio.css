@@ -19,7 +19,7 @@
   --accent-hover:    #0550ae;
   --border:          #d0d7de;
   --card-bg:         #f6f8fa;
-  --nav-bg:          rgba(255, 255, 255, 0.88);
+  --nav-bg:          rgba(255, 255, 255, 0.72);
   --spotlight-r:     9;
   --spotlight-g:     105;
   --spotlight-b:     218;
@@ -41,7 +41,7 @@
   --accent-hover:    #79c0ff;
   --border:          #30363d;
   --card-bg:         #161b22;
-  --nav-bg:          rgba(13, 17, 23, 0.88);
+  --nav-bg:          rgba(13, 17, 23, 0.72);
   --spotlight-r:     88;
   --spotlight-g:     166;
   --spotlight-b:     255;
@@ -168,15 +168,17 @@ button { font-family: inherit; }
   background: var(--bg-secondary);
 }
 
-/* Theme toggle: show correct icon based on current theme */
+/* Theme toggle: show icon matching current mode (auto / light / dark) */
+.icon-auto { display: none; }
 .icon-sun  { display: none; }
 .icon-moon { display: none; }
 
-[data-theme="dark"]  .icon-moon { display: block; }
-[data-theme="light"] .icon-sun  { display: block; }
+[data-theme-mode="auto"]  .icon-auto { display: block; }
+[data-theme-mode="light"] .icon-sun  { display: block; }
+[data-theme-mode="dark"]  .icon-moon { display: block; }
 
-/* Fallback for no JS / system auto */
-:root:not([data-theme]) .icon-sun { display: block; }
+/* Fallback: no JS → show monitor icon */
+:root:not([data-theme-mode]) .icon-auto { display: block; }
 
 /* Mobile nav */
 .nav-toggle { display: none; }
@@ -287,9 +289,25 @@ button { font-family: inherit; }
   z-index: 0;
 }
 
+/* Canvas sits above the dark overlay, below the text — desktop only */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .hero-canvas { display: none; }
+}
+
 .hero .container {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-inner {
@@ -570,6 +588,9 @@ button { font-family: inherit; }
 .footer {
   padding: 1.75rem 0;
   border-top: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .footer-inner {
