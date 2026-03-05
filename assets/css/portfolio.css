@@ -19,7 +19,7 @@
   --accent-hover:    #0550ae;
   --border:          #d0d7de;
   --card-bg:         #f6f8fa;
-  --nav-bg:          rgba(255, 255, 255, 0.88);
+  --nav-bg:          rgba(255, 255, 255, 0.72);
   --spotlight-r:     9;
   --spotlight-g:     105;
   --spotlight-b:     218;
@@ -41,7 +41,7 @@
   --accent-hover:    #79c0ff;
   --border:          #30363d;
   --card-bg:         #161b22;
-  --nav-bg:          rgba(13, 17, 23, 0.88);
+  --nav-bg:          rgba(13, 17, 23, 0.72);
   --spotlight-r:     88;
   --spotlight-g:     166;
   --spotlight-b:     255;
