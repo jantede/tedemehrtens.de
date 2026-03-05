@@ -150,14 +150,14 @@ layout: null
         const segDist  = ptSegDist(mx, my, a.x, a.y, b.x, b.y);
         const revealed = smoothstep(Math.max(0, 1 - segDist / REVEAL_R));
 
-        const alpha = Math.max(GHOST_EDGE * edgeFade, revealed * edgeFade * 0.75);
+        const alpha = Math.max(GHOST_EDGE * edgeFade, revealed * edgeFade * 0.55);
         if (alpha < 0.01) continue;
 
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
         ctx.strokeStyle = `rgba(${r},${g},${b},${alpha})`;
-        ctx.lineWidth   = 0.75 + revealed * 0.75;
+        ctx.lineWidth   = 0.4 + revealed * 0.4;
         ctx.stroke();
       }
     }
