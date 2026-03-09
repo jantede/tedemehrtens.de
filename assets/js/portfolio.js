@@ -30,18 +30,17 @@ function closeDropdown() {
 }
 
 if (toggle && dropdown) {
+  // Sync active class on initial load
+  const initMode = html.dataset.themeMode || 'auto';
+  document.querySelectorAll('.theme-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === initMode);
+  });
+
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
     const opening = !dropdown.classList.contains('open');
     dropdown.classList.toggle('open', opening);
     toggle.setAttribute('aria-expanded', opening);
-    // Mark active option whenever opening
-    if (opening) {
-      const current = html.dataset.themeMode || 'auto';
-      document.querySelectorAll('.theme-option').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.mode === current);
-      });
-    }
   });
 
   dropdown.querySelectorAll('.theme-option').forEach(btn => {
