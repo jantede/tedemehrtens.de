@@ -1,9 +1,10 @@
 /* portfolio.js — theme toggle, spotlight, mobile nav */
 
-// === Theme (3-state: auto → light → dark → auto) ===
-const html  = document.documentElement;
-const sysMQ = window.matchMedia('(prefers-color-scheme: dark)');
-const CYCLE = ['auto', 'light', 'dark'];
+// === Theme picker (dropdown) ===
+const html     = document.documentElement;
+const sysMQ    = window.matchMedia('(prefers-color-scheme: dark)');
+const toggle   = document.getElementById('theme-toggle');
+const dropdown = document.getElementById('theme-dropdown');
 
 function resolveTheme(mode) {
   return mode === 'auto' ? (sysMQ.matches ? 'dark' : 'light') : mode;
@@ -17,15 +18,42 @@ function applyMode(mode) {
   } else {
     localStorage.setItem('theme-mode', mode);
   }
+  // Reflect active option
+  document.querySelectorAll('.theme-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === mode);
+  });
 }
 
-const toggle = document.getElementById('theme-toggle');
-if (toggle) {
-  toggle.addEventListener('click', () => {
-    const current = html.dataset.themeMode || 'auto';
-    const next    = CYCLE[(CYCLE.indexOf(current) + 1) % CYCLE.length];
-    applyMode(next);
+function closeDropdown() {
+  dropdown.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}
+
+if (toggle && dropdown) {
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const opening = !dropdown.classList.contains('open');
+    dropdown.classList.toggle('open', opening);
+    toggle.setAttribute('aria-expanded', opening);
+    // Mark active option whenever opening
+    if (opening) {
+      const current = html.dataset.themeMode || 'auto';
+      document.querySelectorAll('.theme-option').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === current);
+      });
+    }
   });
+
+  dropdown.querySelectorAll('.theme-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyMode(btn.dataset.mode);
+      closeDropdown();
+    });
+  });
+
+  // Close on outside click or Escape
+  document.addEventListener('click', closeDropdown);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDropdown(); });
 }
 
 // Live-follow system preference when in auto mode
