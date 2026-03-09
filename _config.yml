@@ -66,3 +66,4 @@ exclude:
   - Gemfile.lock
   - vendor/
   - wrangler.toml
+  - CLAUDE.md
