@@ -107,6 +107,16 @@ Small thing, but I like it. If something reads wrong, it's one click to see the 
 
 ---
 
-Most of these changes are invisible when they work — correct compression, proper cache headers, meta tags in `<head>`. But they're the kind of thing that quietly matters for how the site behaves once it's out in the world. Getting back into web development after a long break means rediscovering a bunch of these things the hard way, which is honestly a fine way to relearn them. And having linting and a proper deploy workflow in place now makes it a lot less scary to keep iterating.
+Most of these changes are invisible when they work — correct compression, proper cache headers, meta tags in `<head>`. But they're the kind of thing that quietly matters for how the site behaves once it's out in the world.
+
+## Lessons Learned
+
+Jumping in headfirst works. That's basically the takeaway.
+
+I hadn't touched web development seriously in years, and instead of spending weeks reading up on what changed, I just built the thing and fixed problems as they appeared. The compression header, the missing favicon, the wrong `lang` attribute — none of that would have shown up in preparation. It all surfaced from actually shipping something and looking at what broke.
+
+That's exactly what hobby projects like this are for. There's no deadline, no stakeholder asking why the meta tags are wrong, no production incident at 2am. Just a safe space to get things wrong, figure out why, and end up understanding them better than if you'd read about them upfront.
+
+Would recommend.
 
 Source is at [github.com/jantede/tedemehrtens.de](https://github.com/jantede/tedemehrtens.de), as always.
