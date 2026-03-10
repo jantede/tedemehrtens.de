@@ -32,7 +32,7 @@ I added [`jekyll-webp`](https://github.com/sverrirs/jekyll-webp) to the Gemfile.
 
 The only catch is that the `webp` system package needs to be installed on the build runner. For Cloudflare's Git integration, the build command is:
 
-```
+```sh
 apt-get install -y webp && bundle exec jekyll build
 ```
 
