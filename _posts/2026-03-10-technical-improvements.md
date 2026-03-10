@@ -76,7 +76,7 @@ SCSS nesting also removes a lot of repeated parent selectors. The output CSS is 
 
 Embedding a YouTube video with a plain `<iframe>` loads tracking scripts the moment the page opens, before the visitor has consented to anything. That's a problem.
 
-The solution is a click-to-load pattern: show a thumbnail and a play button, load the actual iframe only when clicked. I built this as a dedicated `post-youtube` layout and a reusable `{% raw %}{% include youtube-embed.html %}{% endraw %}` partial. Posts with YouTube videos just set `layout: post-youtube` and `youtube_url` in their front matter — no inline HTML needed in the Markdown.
+The solution is a click-to-load pattern: show a clean consent dialog first, load the actual iframe only when the visitor actively clicks through. I built this as a dedicated `post-youtube` layout and a reusable `{% raw %}{% include youtube-embed.html %}{% endraw %}` partial. Posts with YouTube videos just set `layout: post-youtube` and `youtube_url` in their front matter — no inline HTML needed in the Markdown.
 
 The Datenschutz page was updated to describe this behaviour accordingly.
 
