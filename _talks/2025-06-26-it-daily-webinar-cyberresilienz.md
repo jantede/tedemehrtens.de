@@ -6,4 +6,9 @@ date: 2025-06-26
 time: "10:00"
 location: Online
 type: Webinar
+co_speakers:
+  - name: Kurt Brunschweiger
+    org: ACP
+  - name: Stefan Scheck
+    org: Sophos
 ---
