@@ -1,42 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="{{ page.lang | default: site.lang | default: 'de' }}" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title and page.title != site.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-  <meta name="author" content="{{ site.author }}">
-  {% if page.noindex %}
-  <meta name="robots" content="noindex">
+
+  {% assign page_title = page.title | default: site.title %}
+  {% if page.title and page.title != site.title %}
+    {% assign seo_title = page_title | append: ' — ' | append: site.title %}
+  {% else %}
+    {% assign seo_title = site.title %}
   {% endif %}
+  {% assign seo_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace %}
+  {% assign canonical_url = page.url | replace:'index.html','' | absolute_url %}
+  {% assign seo_image_path = page.image | default: site.image %}
+  {% assign seo_image = seo_image_path | absolute_url %}
+
+  <title>{{ seo_title }}</title>
+  <meta name="description" content="{{ seo_description }}">
+  <meta name="author" content="{{ site.author }}">
+  <meta name="robots" content="{% if page.noindex %}noindex, nofollow{% else %}index, follow{% endif %}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <meta property="og:title" content="{{ seo_title }}">
+  <meta property="og:description" content="{{ seo_description }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{{ seo_image }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="{{ site.locale | default: 'de_DE' }}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ seo_title }}">
+  <meta name="twitter:description" content="{{ seo_description }}">
+  <meta name="twitter:image" content="{{ seo_image }}">
+  {% if site.twitter_username %}<meta name="twitter:site" content="@{{ site.twitter_username }}">{% endif %}
 
   <!-- Apply saved theme before first paint to prevent flash -->
   <script>
     (function() {
       var mode = localStorage.getItem('theme-mode') || 'auto';
-      var sys  = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.dataset.themeMode = mode;
-      document.documentElement.dataset.theme     = (mode === 'auto') ? sys : mode;
+      document.documentElement.dataset.theme = (mode === 'auto') ? sys : mode;
     })();
   </script>
 
-  <!-- Preload critical image if specified by the page -->
   {% if page.preload_image %}
   <link rel="preload" as="image" href="{{ page.preload_image }}" type="image/webp">
   {% endif %}
 
-  <!-- Fonts: preconnect + async load to avoid render-blocking -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="/assets/css/portfolio.css?v={{ site.time | date: '%s' }}">
 
-  <!-- Feed -->
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+  <link rel="icon" href="/assets/img/IMG_1249.jpeg">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 {% include navbar.html %}

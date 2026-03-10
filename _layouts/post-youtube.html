@@ -25,6 +25,10 @@
         {{ content }}
       </article>
 
+      {% if page.youtube_url %}
+        {% include youtube-embed.html youtube_url=page.youtube_url title=page.title %}
+      {% endif %}
+
       {% comment %}Related posts: prefer posts sharing a tag, fall back to recent{% endcomment %}
       {% assign related = "" | split: "" %}
       {% for tag in page.tags %}
