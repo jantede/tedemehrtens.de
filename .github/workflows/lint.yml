@@ -2,7 +2,6 @@ name: Lint
 
 on:
   push:
-    branches: [master]
   pull_request:
 
 jobs:
@@ -22,8 +21,22 @@ jobs:
       - name: Lint JavaScript
         run: npm run lint:js
 
-      - name: Lint HTML
+      - name: Lint HTML (source templates)
         run: npm run lint:html
 
       - name: Lint Markdown
         run: npm run lint:md
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.0'
+          bundler-cache: true
+
+      - name: Install webp tools (for jekyll-webp)
+        run: sudo apt-get install -y webp
+
+      - name: Build site
+        run: bundle exec jekyll build
+
+      - name: Lint generated HTML (_site)
+        run: npm run lint:html-site

@@ -5,6 +5,7 @@
     "lint:js": "eslint assets/js/",
     "lint:html": "htmlhint '_includes/**/*.html' '_layouts/**/*.html' '*.html'",
     "lint:md": "markdownlint-cli2 '_posts/**/*.md' 'about.md' 'impressum.md'",
+    "lint:html-site": "htmlhint '_site/**/*.html' --config .htmlhintrc-site",
     "lint": "npm run lint:js && npm run lint:html && npm run lint:md"
   },
   "devDependencies": {
