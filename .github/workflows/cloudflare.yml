@@ -25,7 +25,12 @@ jobs:
         run: sudo apt-get install -y webp
 
       - name: Build site
-        run: bundle exec jekyll build
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            bundle exec jekyll build --drafts --future
+          else
+            bundle exec jekyll build
+          fi
 
       - name: Deploy to Cloudflare (production)
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
