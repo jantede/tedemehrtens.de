@@ -1,0 +1,55 @@
+// ============================================================
+// THEME DROPDOWN
+// ============================================================
+
+@use 'mixins' as *;
+
+.theme-picker {
+  position: relative;
+}
+
+.theme-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.3rem;
+  min-width: 118px;
+  @include glassmorphism;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  z-index: 200;
+
+  &.open {
+    display: flex;
+  }
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.65rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--text-muted);
+  font-size: 0.825rem;
+  font-family: var(--font);
+  width: 100%;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+
+  &:hover {
+    background: var(--bg-secondary);
+    color: var(--text);
+  }
+
+  &.active {
+    color: var(--accent);
+  }
+}

@@ -1,0 +1,63 @@
+// ============================================================
+// POSTS LIST PAGE
+// ============================================================
+
+@use 'mixins' as *;
+
+.posts-page {
+  @include page-top-padding;
+
+  h1 {
+    @include page-heading;
+  }
+}
+
+.posts-list-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+
+  &:first-child {
+    border-top: 1px solid var(--border);
+  }
+}
+
+.post-item-date {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  width: 95px;
+  padding-top: 0.15rem;
+}
+
+.post-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.post-item-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.post-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.posts-pagination {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}

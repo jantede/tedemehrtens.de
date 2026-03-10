@@ -1,0 +1,14 @@
+// ============================================================
+// TAG PAGE
+// ============================================================
+
+@use 'mixins' as *;
+
+.tag-page-heading {
+  @include page-heading;
+  color: var(--text);
+}
+
+.tag-page-hash {
+  color: var(--accent);
+}

@@ -28,7 +28,10 @@ The `webp` package is needed for `jekyll-webp` to generate WebP images.
 
 | File | Purpose |
 |---|---|
-| `assets/css/portfolio.css` | All styles — single file, no preprocessor |
+| `assets/css/portfolio.scss` | SCSS entry point — Jekyll compiles to `portfolio.css` |
+| `_sass/_mixins.scss` | Shared mixins: `glassmorphism`, `uppercase-label`, `card-hover`, `page-top-padding`, `page-heading` |
+| `_sass/_variables.scss` | CSS custom properties (light + dark theme) |
+| `_sass/_*.scss` | One partial per component/section (reset, navbar, hero, buttons, …) |
 | `assets/js/portfolio.js` | Theme toggle, mouse spotlight, hero constellation, mobile nav |
 | `_includes/header.html` | `<head>` with inline theme script (prevents flash), font loading |
 | `_includes/navbar.html` | Nav + theme toggle button (3 SVG icons: monitor/sun/moon) |
@@ -75,11 +78,14 @@ The `webp` package is needed for `jekyll-webp` to generate WebP images.
 - Future-dated posts are built by the scheduled workflow
 - `posts/index.html` must stay in `posts/` (not `_posts/`) — Jekyll ignores non-date files in `_posts/`
 
-## CSS conventions
-- CSS variables in `:root` and `[data-theme="dark"]`
+## CSS / SCSS conventions
+- Preprocessor: **Dart Sass** via `jekyll-sass-converter` — no extra build step needed
+- Partials live in `_sass/`, compiled entry point is `assets/css/portfolio.scss`
+- CSS variables in `:root` and `[data-theme="dark"]` (in `_sass/_variables.scss`)
+- Mixins in `_sass/_mixins.scss`; partials that use them do `@use 'mixins' as *`
 - Mobile breakpoint: 640px (`max-width: 639px`)
 - Nav height: `var(--nav-height)` (60px)
-- Glassmorphism: `background: var(--nav-bg)` + `backdrop-filter: blur(16px)` — used on navbar and footer
+- Glassmorphism: `@include glassmorphism` — used on navbar, theme-dropdown, footer
 - Accent colour: `var(--accent)` — `#0969da` light / `#58a6ff` dark
 
 ## Git workflow

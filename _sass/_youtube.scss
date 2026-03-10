@@ -1,0 +1,46 @@
+// ============================================================
+// YOUTUBE EMBED CONSENT
+// ============================================================
+
+.youtube-embed {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.youtube-consent,
+.youtube-frame-wrap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  padding: 1.25rem;
+}
+
+.youtube-consent {
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+}
+
+.youtube-consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.youtube-frame-wrap {
+  padding: 0;
+  overflow: hidden;
+
+  iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+}

@@ -1,0 +1,39 @@
+// ============================================================
+// MIXINS — reusable patterns
+// ============================================================
+
+// Glassmorphism: navbar, theme-dropdown, footer
+@mixin glassmorphism {
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+// Uppercase section label: .skill-category-name, .post-related-heading
+@mixin uppercase-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+// Card lift on hover: .post-card, .post-related-card
+@mixin card-hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+// Page sections below the navbar: .page-wrap, .post-page, .posts-page
+@mixin page-top-padding {
+  padding-top: calc(var(--nav-height) + 3rem);
+  padding-bottom: 5rem;
+}
+
+// Large page-level headings: .page-wrap h1, .posts-page h1, .tag-page-heading
+@mixin page-heading {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
