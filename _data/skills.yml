@@ -1,19 +1,35 @@
-- category: Datacenter
+- category: Networking
   items:
-    - Data Backup & Restore
-    - Firewalls
+    - Firewalls (Checkpoint)
+    - Routing & Switching
     - IP Networks
-    - Automation
+    - VPN
 
-- category: Tools & Platforms
+- category: Virtualization & Cloud
   items:
-    - Veeam
-    - Linux
-    - Git
+    - VMware vSphere
+    - Proxmox
+    - Microsoft Azure
+    - Microsoft 365
     - Docker
+
+- category: Data Protection
+  items:
+    - Veeam Backup & Replication
+    - Backup & Restore
+    - Disaster Recovery
+
+- category: DevOps & Automation
+  items:
+    - CI/CD
+    - Git
+    - Linux
+    - Change Management
 
 - category: Programming
   items:
     - Python
+    - PowerShell
     - Bash
+    - Ruby
     - PHP

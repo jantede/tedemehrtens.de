@@ -103,6 +103,68 @@ image: /assets/img/IMG_1249.jpeg
   </div>
 </section>
 
+<!-- CERTIFICATIONS -->
+{% if site.data.certifications.size > 0 %}
+<section class="section" id="certifications">
+  <div class="container">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-list">
+      {% for cert in site.data.certifications %}
+      <div class="cert-card">
+        <div class="cert-badge" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/>
+            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <p class="cert-name">
+            {% if cert.url %}
+            <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
+            {% else %}
+            {{ cert.name }}
+            {% endif %}
+          </p>
+          <p class="cert-meta">{{ cert.issuer }} · {{ cert.issued }}</p>
+          {% if cert.skills %}
+          <div class="cert-skills">
+            {% for skill in cert.skills %}
+            <span class="skill-tag">{{ skill }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- COMMUNITY -->
+{% if site.data.volunteer.size > 0 %}
+<section class="section" id="community">
+  <div class="container">
+    <h2 class="section-title">Community & Volunteer</h2>
+    <div class="timeline">
+      {% for item in site.data.volunteer %}
+      <div class="timeline-item">
+        <h3 class="timeline-role">{{ item.role }}</h3>
+        <div class="timeline-meta">
+          <span class="timeline-company">{{ item.org }}</span>
+          <span class="timeline-sep" aria-hidden="true">·</span>
+          <span class="timeline-period">{{ item.period }}</span>
+        </div>
+        {% if item.description %}
+        <p class="timeline-desc">{{ item.description }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <!-- BLOG (only shown when posts exist) -->
 {% if site.posts.size > 0 %}
 <section class="section" id="blog">
