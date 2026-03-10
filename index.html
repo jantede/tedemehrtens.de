@@ -84,25 +84,6 @@ image: /assets/img/IMG_1249.jpeg
   </div>
 </section>
 
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <div class="container">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-list">
-      {% for category in site.data.skills %}
-      <div>
-        <p class="skill-category-name">{{ category.category }}</p>
-        <div class="skill-tags">
-          {% for item in category.items %}
-          <span class="skill-tag">{{ item }}</span>
-          {% endfor %}
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
 <!-- SPEAKING -->
 {% assign sorted_talks = site.talks | sort: "date" | reverse %}
 {% if sorted_talks.size > 0 %}
@@ -110,7 +91,7 @@ image: /assets/img/IMG_1249.jpeg
   <div class="container">
     <h2 class="section-title">Speaking</h2>
     <div class="talk-list">
-      {% for talk in sorted_talks limit:5 %}
+      {% for talk in sorted_talks limit:4 %}
       {% assign talk_date = talk.date | date: "%s" | plus: 0 %}
       {% assign today = site.time | date: "%s" | plus: 0 %}
       <div class="talk-card {% if talk_date >= today %}talk-upcoming{% endif %}">
@@ -142,6 +123,44 @@ image: /assets/img/IMG_1249.jpeg
   </div>
 </section>
 {% endif %}
+
+<!-- BLOG (only shown when posts exist) -->
+{% if site.posts.size > 0 %}
+<section class="section" id="blog">
+  <div class="container">
+    <h2 class="section-title">Blog</h2>
+    <div class="post-grid">
+      {% for post in site.posts limit:3 %}
+      <a class="post-card" href="{{ post.url }}">
+        <p class="post-card-title">{{ post.title }}</p>
+        <p class="post-card-date">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <a href="/posts" class="btn btn-secondary">All posts</a>
+  </div>
+</section>
+{% endif %}
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-list">
+      {% for category in site.data.skills %}
+      <div>
+        <p class="skill-category-name">{{ category.category }}</p>
+        <div class="skill-tags">
+          {% for item in category.items %}
+          <span class="skill-tag">{{ item }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 <!-- CERTIFICATIONS -->
 {% if site.data.certifications.size > 0 %}
@@ -205,22 +224,4 @@ image: /assets/img/IMG_1249.jpeg
 </section>
 {% endif %}
 
-<!-- BLOG (only shown when posts exist) -->
-{% if site.posts.size > 0 %}
-<section class="section" id="blog">
-  <div class="container">
-    <h2 class="section-title">Blog</h2>
-    <div class="post-grid">
-      {% for post in site.posts limit:3 %}
-      <a class="post-card" href="{{ post.url }}">
-        <p class="post-card-title">{{ post.title }}</p>
-        <p class="post-card-date">{{ post.date | date: "%B %d, %Y" }}</p>
-        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-      </a>
-      {% endfor %}
-    </div>
-    <a href="/posts" class="btn btn-secondary">All posts</a>
-  </div>
-</section>
-{% endif %}
 </main>
