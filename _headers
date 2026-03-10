@@ -1,3 +1,6 @@
+---
+layout: null
+---
 # Security headers for all routes
 # Note: Vary: Accept-Encoding is intentionally omitted — Cloudflare adds it
 # automatically when applying gzip/Brotli compression. Setting it manually
@@ -5,9 +8,11 @@
 # which disables its automatic compression.
 /*
   X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' {{ site.theme_csp_hash }}; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
 
 # Versioned assets: 1 year immutable (safe — cache-busted via ?v= query param)
 /assets/css/*

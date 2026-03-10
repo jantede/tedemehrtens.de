@@ -1,0 +1,24 @@
+{% assign today = site.time | date: "%Y-%m-%d" %}
+{% for talk in site.talks %}
+  {% assign talk_date = talk.date | date: "%Y-%m-%d" %}
+  {% if talk_date >= today and talk.title and talk.event and talk.location and talk.date %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": {{ talk.title | jsonify }},
+  "startDate": "{{ talk.date | date: '%Y-%m-%d' }}{% if talk.time and talk.timezone %}T{{ talk.time }}:00{{ talk.timezone }}{% endif %}",
+  "location": {
+    "@type": "Place",
+    "name": {{ talk.event | jsonify }},
+    "address": {{ talk.location | jsonify }}
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": {{ talk.event | jsonify }}
+  }{% if talk.event_url %},
+  "url": {{ talk.event_url | jsonify }}{% endif %}
+}
+</script>
+  {% endif %}
+{% endfor %}

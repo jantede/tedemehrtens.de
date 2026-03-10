@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'de' }}" data-theme="light">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" data-theme="light" data-theme-mode="auto">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
 
   <meta property="og:title" content="{{ seo_title }}">
   <meta property="og:description" content="{{ seo_description }}">
-  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:type" content="{% if page.layout == 'post' or page.layout == 'post-youtube' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ canonical_url }}">
   <meta property="og:image" content="{{ seo_image }}">
   <meta property="og:site_name" content="{{ site.title }}">
@@ -37,15 +37,8 @@
   <meta name="twitter:image" content="{{ seo_image }}">
   {% if site.twitter_username %}<meta name="twitter:site" content="@{{ site.twitter_username }}">{% endif %}
 
-  <!-- Apply saved theme before first paint to prevent flash -->
-  <script>
-    (function() {
-      var mode = localStorage.getItem('theme-mode') || 'auto';
-      var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.dataset.themeMode = mode;
-      document.documentElement.dataset.theme = (mode === 'auto') ? sys : mode;
-    })();
-  </script>
+  <!-- Apply saved theme before first paint to prevent flash (synchronous inline — hash auto-generated in _headers by csp_hash.rb) -->
+  <script>{% include theme-init-inline.js %}</script>
 
   {% if page.preload_image %}
   <link rel="preload" as="image" href="{{ page.preload_image }}" type="image/webp">
@@ -55,6 +48,13 @@
 
   <link rel="icon" href="/assets/img/IMG_1249.jpeg">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+  {% include schema-website.html %}
+  {% if page.url == '/' or page.layout == 'home' %}
+  {% include schema-person.html %}
+  {% include schema-events.html %}
+  {% endif %}
+  {% if page.layout == 'post' or page.layout == 'post-youtube' %}{% include schema-post.html %}{% endif %}
 </head>
 <body>
 <a class="skip-link" href="#main-content">{% if page_lang == 'de' %}Zum Inhalt springen{% else %}Skip to content{% endif %}</a>

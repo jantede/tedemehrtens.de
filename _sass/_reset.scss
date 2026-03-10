@@ -52,6 +52,10 @@ button { font-family: inherit; }
   z-index: 1000;
   text-decoration: none;
 
+  @media (prefers-reduced-motion: no-preference) {
+    transition: top 0.15s ease;
+  }
+
   &:focus {
     top: 0.75rem;
   }
