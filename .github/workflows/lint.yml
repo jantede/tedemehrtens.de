@@ -44,9 +44,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.0'
-
-      - name: Install Ruby dependencies
-        run: bundle install --jobs 4 --retry 3
+          bundler-cache: true
 
       - name: Build site
         run: |
