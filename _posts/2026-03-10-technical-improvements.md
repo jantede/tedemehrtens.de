@@ -115,6 +115,10 @@ Jumping in headfirst works. That's basically the takeaway.
 
 I hadn't touched web development seriously in years, and instead of spending weeks reading up on what changed, I just built the thing and fixed problems as they appeared. The compression header, the missing favicon, the wrong `lang` attribute — none of that would have shown up in preparation. It all surfaced from actually shipping something and looking at what broke.
 
+AI tools made a real difference here too. A lot of the refactoring, the linting setup, the CI/CD workflows — stuff that would have taken me a weekend of reading documentation — came together in hours. It's a genuinely good time to pick up a project like this after a long break, because the gap between "I kind of remember how this works" and "this is done and correct" is a lot smaller than it used to be.
+
+That said, AI-generated code still needs eyes on it. It's fast, but it's not infallible — and when you're a bit rusty yourself, the combination of "I'm not sure" and "the AI seems confident" can quietly produce something subtly wrong. Having automated checks in place means at least the obvious stuff gets caught before it ships.
+
 That's exactly what hobby projects like this are for. There's no deadline, no stakeholder asking why the meta tags are wrong, no production incident at 2am. Just a safe space to get things wrong, figure out why, and end up understanding them better than if you'd read about them upfront.
 
 Would recommend.
