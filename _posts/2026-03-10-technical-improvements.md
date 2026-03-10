@@ -10,13 +10,15 @@ tags:
   - git
 ---
 
-A few days ago I wrote about [how this site is built](/2026/03/05/how-this-site-is-built.html). Since then, I kept tinkering. Turns out launching a site is the easy part — the week after is when you find all the things you got subtly wrong.
+A few days ago I wrote about [how this site is built](/2026/03/05/how-this-site-is-built.html). What I didn't mention there is that I hadn't seriously touched frontend or web stuff in years. The relaunch was very much a case of jumping back in and figuring things out as I went.
+
+Turns out launching a site is the easy part — the week after is when you find all the things you got subtly wrong. Some of it was rust, some of it was just that the web moved on while I wasn't looking. Either way, a lot of small fixes and improvements piled up quickly.
 
 Here's what changed on the technical side.
 
 ## The Header That Killed Compression
 
-First up: a classic "I was trying to be clever and it backfired" situation.
+First up: a classic "I was trying to be clever and it backfired" situation. One of the benefits of not having touched this stuff in a while is that you confidently do things that turn out to be completely wrong.
 
 I had manually set `Vary: Accept-Encoding` in `_headers`. Sounds reasonable — it's a standard header that tells caches that the response varies based on what encoding the client accepts. Except Cloudflare Workers Static Assets interprets that header to mean the origin is handling compression itself, and therefore skips its own automatic Brotli/gzip compression entirely.
 
@@ -50,7 +52,7 @@ The site launched without Open Graph tags, which meant every shared link showed 
 
 Added the full set of `<meta>` tags to `_includes/header.html`: Open Graph (`og:title`, `og:description`, `og:image`, `og:type`), Twitter Card (`twitter:card`, `summary_large_image`), a canonical URL, and an explicit `robots` meta tag. Posts get `og:type: article`, everything else gets `website`.
 
-While I was in there, I also noticed the `lang` attribute on `<html>` was hardcoded to `en` — not ideal for a site that's mostly German. It now reads from the page or site config. And a favicon was missing entirely, which I'm a little embarrassed about in retrospect.
+While I was in there, I also noticed the `lang` attribute on `<html>` was hardcoded to `en` — not ideal for a site that's mostly German. It now reads from the page or site config. And a favicon was missing entirely. That one I can only chalk up to "it's been a while" — the kind of basic thing you forget is even a thing until someone points it out.
 
 For the legal pages (`/impressum/` and `/datenschutz/`), there's now a `noindex: true` front matter flag that sets `noindex, nofollow` in the robots meta. No need for those to show up in search results.
 
@@ -105,6 +107,6 @@ Small thing, but I like it. If something reads wrong, it's one click to see the 
 
 ---
 
-Most of these changes are invisible when they work — correct compression, proper cache headers, meta tags in `<head>`. But they're the kind of thing that quietly matters for how the site behaves once it's out in the world. And having linting and a proper deploy workflow makes it a lot less scary to make changes quickly.
+Most of these changes are invisible when they work — correct compression, proper cache headers, meta tags in `<head>`. But they're the kind of thing that quietly matters for how the site behaves once it's out in the world. Getting back into web development after a long break means rediscovering a bunch of these things the hard way, which is honestly a fine way to relearn them. And having linting and a proper deploy workflow in place now makes it a lot less scary to keep iterating.
 
 Source is at [github.com/jantede/tedemehrtens.de](https://github.com/jantede/tedemehrtens.de), as always.
