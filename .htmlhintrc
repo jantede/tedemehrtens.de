@@ -1,0 +1,15 @@
+{
+  "tagname-lowercase": true,
+  "attr-lowercase": ["viewBox", "preserveAspectRatio", "clipPathUnits"],
+  "attr-value-double-quotes": true,
+  "attr-no-duplication": true,
+  "doctype-first": false,
+  "tag-pair": false,
+  "spec-char-escape": false,
+  "id-unique": true,
+  "src-not-empty": true,
+  "title-require": false,
+  "attr-value-not-empty": false,
+  "href-abs-or-rel": false,
+  "space-tab-mixed-disabled": "space"
+}
