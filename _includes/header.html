@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}" data-theme="light">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" data-theme="light" data-theme-mode="auto">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
 
   <meta property="og:title" content="{{ seo_title }}">
   <meta property="og:description" content="{{ seo_description }}">
-  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:type" content="{% if page.layout == 'post' or page.layout == 'post-youtube' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ canonical_url }}">
   <meta property="og:image" content="{{ seo_image }}">
   <meta property="og:site_name" content="{{ site.title }}">
@@ -37,8 +37,8 @@
   <meta name="twitter:image" content="{{ seo_image }}">
   {% if site.twitter_username %}<meta name="twitter:site" content="@{{ site.twitter_username }}">{% endif %}
 
-  <!-- Apply saved theme before first paint to prevent flash (synchronous, no defer) -->
-  <script src="/assets/js/theme-init.js?v={{ site.time | date: '%s' }}"></script>
+  <!-- Apply saved theme before first paint to prevent flash (synchronous inline — hash auto-generated in _headers by csp_hash.rb) -->
+  <script>{% include theme-init-inline.js %}</script>
 
   {% if page.preload_image %}
   <link rel="preload" as="image" href="{{ page.preload_image }}" type="image/webp">

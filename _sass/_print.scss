@@ -57,7 +57,8 @@
   // Keep images within page
   img {
     max-width: 100%;
-    page-break-inside: avoid;
+    page-break-inside: avoid; // legacy
+    break-inside: avoid;
   }
 
   // Avoid page breaks inside key blocks
@@ -66,11 +67,13 @@
   .talk-card,
   pre,
   blockquote {
-    page-break-inside: avoid;
+    page-break-inside: avoid; // legacy
+    break-inside: avoid;
   }
 
   // Section headings start on same page as first content
   h1, h2, h3 {
-    page-break-after: avoid;
+    page-break-after: avoid; // legacy
+    break-after: avoid;
   }
 }
