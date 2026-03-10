@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using Automator to Organize Music for the Audi MMI"
-tags: automator mac car sd-card audi
+tags: mac car audi audi-a4
 background: /assets/img/posts/2019/03/A4.jpg
 ---
 Maybe there are some other old-fashioned folks out there like me who still have to organize their car music via SD card. My situation is this:
