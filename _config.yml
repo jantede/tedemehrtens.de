@@ -30,6 +30,7 @@ locale: de_DE
 timezone: Europe/Berlin
 twitter_username: jantede
 github_username: jantede
+github_repo: tedemehrtens.de
 
 paginate:		5
 paginate_path:	"/posts/page:num/"
