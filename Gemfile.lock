@@ -170,6 +170,7 @@ DEPENDENCIES
   jekyll (~> 4.4)
   jekyll-feed (~> 0.17)
   jekyll-paginate
+  jekyll-sass-converter (~> 3.0)
   jekyll-sitemap
   jekyll-webp
   tzinfo (~> 1.2)
