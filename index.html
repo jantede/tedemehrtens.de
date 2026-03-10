@@ -86,15 +86,29 @@ image: /assets/img/IMG_1249.jpeg
 </section>
 
 <!-- SPEAKING -->
-{% assign sorted_talks = site.talks | sort: "date" | reverse %}
-{% if sorted_talks.size > 0 %}
+{% assign today = site.time | date: "%Y-%m-%d" %}
+{% assign upcoming_talks = "" | split: "" %}
+{% assign past_talks = "" | split: "" %}
+{% for talk in site.talks %}
+  {% assign talk_date = talk.date | date: "%Y-%m-%d" %}
+  {% if talk_date >= today %}
+    {% assign upcoming_talks = upcoming_talks | push: talk %}
+  {% else %}
+    {% assign past_talks = past_talks | push: talk %}
+  {% endif %}
+{% endfor %}
+{% assign upcoming_talks = upcoming_talks | sort: "date" %}
+{% assign past_talks = past_talks | sort: "date" | reverse %}
+{% assign next_upcoming = upcoming_talks | first %}
+{% assign display_talks = past_talks | slice: 0, 3 %}
+{% if next_upcoming %}{% assign display_talks = display_talks | unshift: next_upcoming %}{% endif %}
+{% if display_talks.size > 0 %}
 <section class="section" id="speaking">
   <div class="container">
     <h2 class="section-title">Speaking</h2>
     <div class="talk-list">
-      {% for talk in sorted_talks limit:4 %}
+      {% for talk in display_talks %}
       {% assign talk_date = talk.date | date: "%Y-%m-%d" %}
-      {% assign today = site.time | date: "%Y-%m-%d" %}
       <div class="talk-card {% if talk_date >= today %}talk-upcoming{% endif %}">
         <div class="talk-meta-top">
           {% if talk_date >= today %}<span class="talk-badge">Upcoming</span>{% endif %}
