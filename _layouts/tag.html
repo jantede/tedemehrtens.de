@@ -1,5 +1,5 @@
 {% include header.html %}
-<main class="posts-page">
+<main class="posts-page" id="main-content">
   <div class="container">
 
     <a href="/posts/" class="post-back">
@@ -18,7 +18,7 @@
         <div class="post-item-info">
           <a class="post-item-title" href="{{ post.url }}">{{ post.title }}</a>
           {% if post.tags.size > 0 %}
-          <div class="post-item-tags">{% for tag in post.tags %}<a class="post-tag" href="/tags/{{ tag }}/">#{{ tag }}</a>{% endfor %}</div>
+          <div class="post-item-tags">{% for tag in post.tags %}<a class="post-tag" href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>{% endfor %}</div>
           {% endif %}
         </div>
       </div>

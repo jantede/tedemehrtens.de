@@ -24,7 +24,7 @@
   --spotlight-g:     105;
   --spotlight-b:     218;
   --spotlight-o:     0.04;
-  --font:            'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font:            -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono:       'JetBrains Mono', 'Fira Code', 'Fira Mono', monospace;
   --radius:          8px;
   --nav-height:      60px;
@@ -81,6 +81,29 @@ body::before {
 a { color: inherit; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; }
+
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 
 /* === LAYOUT === */
 .container {
@@ -1053,4 +1076,12 @@ button { font-family: inherit; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  body::before { display: none; }
+  .scroll-hint { display: none; }
 }

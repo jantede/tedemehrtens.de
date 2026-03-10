@@ -24,5 +24,5 @@ and since April 2025 as Senior Systems Engineer.
 ---
 
 This website has been running in various forms since 2014.
-It's built with [Jekyll](https://jekyllrb.com) and hosted on [Uberspace](https://uberspace.de).
+It's built with [Jekyll](https://jekyllrb.com) and hosted on Cloudflare Workers.
 The source is on [GitHub](https://github.com/jantede/tedemehrtens.de).

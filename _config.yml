@@ -24,7 +24,10 @@ author: Jan Tede Mehrtens
 description: >- # this means to ignore newlines until "baseurl:"
   Informatiker aus dem Norden. Senior Systems Engineer bei Veeam. Technik, Netze und gelegentlich ein Blogpost.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.tedemehrtens.de"
+lang: de
+locale: de_DE
+timezone: Europe/Berlin
 twitter_username: jantede
 github_username: jantede
 
@@ -35,7 +38,22 @@ paginate_path:	"/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
   - jekyll-webp
+
+future: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/IMG_1249.jpeg
+      lang: de
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
 
 webp:
   enabled:    true
