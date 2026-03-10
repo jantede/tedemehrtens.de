@@ -25,8 +25,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Informatiker aus dem Norden. Senior Systems Engineer bei Veeam. Technik, Netze und gelegentlich ein Blogpost.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.tedemehrtens.de"
-lang: de
-locale: de_DE
+lang: en
+locale: en_US
 timezone: Europe/Berlin
 twitter_username: jantede
 github_username: jantede
@@ -49,7 +49,7 @@ defaults:
       path: ""
     values:
       image: /assets/img/default.png
-      lang: de
+      lang: en
   - scope:
       path: ""
       type: posts

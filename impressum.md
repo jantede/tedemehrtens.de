@@ -3,6 +3,7 @@ layout: page
 title: Impressum
 permalink: /impressum/
 noindex: true
+lang: de
 ---
 <h2 id="m46">Diensteanbieter</h2>
 <p>Jan Tede Mehrtens</p>
