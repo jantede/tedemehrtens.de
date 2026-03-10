@@ -54,7 +54,7 @@ The site launched without Open Graph tags, which meant every shared link showed 
 
 Added the full set of `<meta>` tags to `_includes/header.html`: Open Graph (`og:title`, `og:description`, `og:image`, `og:type`), Twitter Card (`twitter:card`, `summary_large_image`), a canonical URL, and an explicit `robots` meta tag. Posts get `og:type: article`, everything else gets `website`.
 
-While I was in there, I also noticed the `lang` attribute on `<html>` was hardcoded to `en` — not ideal for a site that's mostly German. It now reads from the page or site config. And a favicon was missing entirely. That one I can only chalk up to "it's been a while" — the kind of basic thing you forget is even a thing until someone points it out.
+While I was in there, I also noticed the `lang` attribute on `<html>` was hardcoded to `en` — not ideal for a site with mixed-language content. It now reads from the page or site config. And a favicon was missing entirely. That one I can only chalk up to "it's been a while" — the kind of basic thing you forget is even a thing until someone points it out.
 
 For the legal pages (`/impressum/` and `/datenschutz/`), there's now a `noindex: true` front matter flag that sets `noindex, nofollow` in the robots meta. No need for those to show up in search results.
 
