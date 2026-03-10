@@ -158,8 +158,62 @@
     });
   }
 
+  function initYouTubeConsent() {
+    const embeds = Array.from(document.querySelectorAll('.youtube-embed[data-youtube-id]'));
+    if (!embeds.length) return;
+
+    const CONSENT_KEY = 'youtube-consent';
+
+    function createFrame(embed) {
+      const id = embed.dataset.youtubeId;
+      const title = embed.dataset.youtubeTitle || 'YouTube video';
+      const frameWrap = embed.querySelector('[data-youtube-frame-wrap]');
+      const consentBox = embed.querySelector('[data-youtube-consent-box]');
+      if (!id || !frameWrap || !consentBox) return;
+
+      frameWrap.innerHTML = '';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0`;
+      iframe.title = title;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      frameWrap.appendChild(iframe);
+
+      consentBox.hidden = true;
+      frameWrap.hidden = false;
+    }
+
+    function grantConsent(embed, remember) {
+      if (remember) {
+        localStorage.setItem(CONSENT_KEY, 'granted');
+      }
+      createFrame(embed);
+    }
+
+    const globalConsent = localStorage.getItem(CONSENT_KEY) === 'granted';
+    embeds.forEach((embed) => {
+      if (globalConsent) {
+        createFrame(embed);
+        return;
+      }
+
+      const allowBtn = embed.querySelector('[data-youtube-allow]');
+      const rememberBtn = embed.querySelector('[data-youtube-allow-remember]');
+
+      if (allowBtn) {
+        allowBtn.addEventListener('click', () => grantConsent(embed, false));
+      }
+      if (rememberBtn) {
+        rememberBtn.addEventListener('click', () => grantConsent(embed, true));
+      }
+    });
+  }
+
   initThemePicker();
   initMouseSpotlight();
   initHeroConstellation();
   initMobileNavigation();
+  initYouTubeConsent();
 })();
