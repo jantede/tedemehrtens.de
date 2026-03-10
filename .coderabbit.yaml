@@ -1,0 +1,16 @@
+reviews:
+  auto_review:
+    enabled: true
+    drafts: false
+  profile: chill
+  path_instructions:
+    - path: "_posts/**/*.md"
+      instructions: "Check front matter (title, date, tags, layout). Flag broken Liquid tags or markdown issues."
+    - path: "_includes/**/*.html"
+      instructions: "These are Liquid templates — partial HTML is expected. Check for unclosed tags, missing alt attributes, and accessibility issues."
+    - path: "_layouts/**/*.html"
+      instructions: "Jekyll layout files. Verify correct use of {{ content }}, front matter variables, and layout inheritance."
+    - path: "_sass/**/*.scss"
+      instructions: "Check consistency with _variables.scss and _mixins.scss. Flag hardcoded values that should use CSS variables."
+    - path: "assets/js/**/*.js"
+      instructions: "Vanilla JS only, no framework. Check for potential XSS, unintended globals, and browser compatibility."
