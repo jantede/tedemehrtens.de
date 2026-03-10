@@ -1,5 +1,5 @@
 ---
-title: "Sicher trotz Sparkurs – So meistern Unternehmen die Cyber-Risiken ihrer Lieferanten"
+title: "Code Red: Cyber-Angriff! Strategien zur Prävention, Reaktion und Wiederherstellung – Von Backup bis Disaster Recovery."
 event: "Deutscher IT-Security Kongress 2024"
 event_url: https://www.pco-online.de/kongress2024
 date: 2024-09-26

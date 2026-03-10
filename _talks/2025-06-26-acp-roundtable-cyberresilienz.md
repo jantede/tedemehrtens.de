@@ -5,7 +5,4 @@ event_url: https://www.acp-gruppe.com/de-de/news-und-events/roundtable-cyberresi
 date: 2025-06-26
 location: Online
 type: Roundtable
-co_speakers:
-  - name: Sophos
-    org: Sophos
 ---

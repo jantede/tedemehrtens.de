@@ -1,9 +1,9 @@
-- role: Ratsherr
-  org: Samtgemeinde Rehden
+- role: Council Member
+  org: Gemeinde Ritterhude
   period: "November 2018 – October 2021"
-  description: "Engaged in local politics to give young people a low-threshold way to participate in civic decisions."
+  description: "Engaged in local politics"
 
-- role: Leitung Bühnentechnik
-  org: Gewerk Bühnentechnik, Theater in OHZ
-  period: "2011 – 2022"
-  description: "Planning, design, and setup of stage technology (light & sound) for 100+ productions in collaboration with tech companies, actors, and directors."
+- role: Stage Technician
+  org: Theater in OHZ, Scharmbecker Speeldeel
+  period: "2011 – Present"
+  description: "Planning, design, and setup of stage technology (light & sound) for 100+ productions in collaboration with vendors, actors, and directors."

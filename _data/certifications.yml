@@ -8,7 +8,7 @@
 
 - name: Veeam Certified Engineer (VMCE)
   issuer: Veeam Software
-  issued: "January 2024"
+  issued: "2024"
   url: https://www.veeam.com/vmce.html
   skills:
     - Data Protection
