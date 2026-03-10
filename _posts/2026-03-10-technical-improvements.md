@@ -2,7 +2,7 @@
 layout: post
 title: "Under the Hood: What Changed Since the Relaunch"
 date: 2026-03-10 14:00:00 +0100
-description: "A look at all the technical improvements made to this site since the initial relaunch — compression fixes, WebP automation, CSS refactoring, linting, and proper CI/CD."
+description: "A look at all the technical improvements made to this site since the initial relaunch — compression fixes, WebP automation, CSS refactoring, linting, CI/CD, and a round of visual polish."
 tags:
   - jekyll
   - cloudflare
@@ -16,7 +16,7 @@ Turns out launching a site is the easy part — the week after is when you find 
 
 One thread running through all of it: I love when things are fast, lean, and privacy-friendly by default. No bloated frontend libraries, no unnecessary third-party requests, no tracking that nobody asked for. KISS — keep it simple, stupid. That's been something of a personal mantra throughout my IT career and it shows up everywhere here — in the choice of a static site over WordPress, in serving WebP over JPEG, in making YouTube embeds opt-in. The web doesn't need to be heavy to be good.
 
-Here's what changed on the technical side.
+Here's what changed — technically and visually.
 
 ## The Header That Killed Compression
 
@@ -106,6 +106,14 @@ PR reviews are now handled by [CodeRabbit](https://coderabbit.ai/), which posts 
 Every page's footer now has a direct link to its source file on GitHub. It uses Jekyll's `page.path` variable to build the URL, so for this post it points directly to the `.md` file in the repo.
 
 Small thing, but I like it. If something reads wrong, it's one click to see the raw Markdown or suggest a fix.
+
+## Visual Polish
+
+After all the infrastructure work, a round of visual improvements.
+
+**Speaking cards.** I added some talk cards so you can see the public events I attend(ed). You'll probably also find recordings there in future
+
+**Per-section colour accents.** The section titles (About, Experience, Speaking, Skills, Certifications, Community) now each have a short coloured bar underneath. Each section gets a distinct colour, nothing dramatic, just enough to break up the otherwise monochrome page.
 
 ---
 

@@ -13,4 +13,24 @@
   letter-spacing: -0.02em;
   margin-bottom: 2.5rem;
   color: var(--text);
+  position: relative;
+  padding-bottom: 0.65rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2rem;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--section-color, var(--accent));
+  }
 }
+
+#about        .section-title { --section-color: var(--c-about); }
+#experience   .section-title { --section-color: var(--c-experience); }
+#speaking     .section-title { --section-color: var(--c-speaking); }
+#skills       .section-title { --section-color: var(--c-skills); }
+#certifications .section-title { --section-color: var(--c-certifications); }
+#community    .section-title { --section-color: var(--c-community); }

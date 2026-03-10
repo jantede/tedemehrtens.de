@@ -2,7 +2,7 @@
 title: Tede Mehrtens
 layout: home
 preload_image: /assets/img/IMG_1249.webp
-description: "Persönliche Website von Tede Mehrtens: Senior Systems Engineer, Projekte und Blog."
+description: "Persönliche Website von Tede Mehrtens: Trusted tech advisor, Speaker, Projekte und Blog."
 image: /assets/img/IMG_1249.jpeg
 ---
 
@@ -16,7 +16,7 @@ image: /assets/img/IMG_1249.jpeg
       <p class="hero-eyebrow">Hey, I'm</p>
       <h1 class="hero-name">Tede Mehrtens</h1>
       <p class="hero-title">
-        Senior Systems Engineer at <a href="https://www.veeam.com" target="_blank" rel="noopener noreferrer">Veeam</a>
+        Trusted tech advisor. On stage, in the room, on the whiteboard.
       </p>
       <div class="hero-actions">
         <a href="https://www.linkedin.com/in/tedemehrtens/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -26,6 +26,7 @@ image: /assets/img/IMG_1249.jpeg
           Connect on LinkedIn
         </a>
         <a href="#about" class="btn btn-secondary">About me</a>
+        {% if site.posts.size > 0 %}<a href="#blog" class="btn btn-secondary">Blog</a>{% endif %}
       </div>
       <div class="scroll-hint" aria-hidden="true">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -49,7 +50,8 @@ image: /assets/img/IMG_1249.jpeg
     <p>
       I completed a dual study programme in Communications &amp; Media Informatics at Deutsche Telekom,
       then spent a few years working on network automation projects before joining Veeam in 2023.
-      Currently, I'm a Senior Systems Engineer there, helping customers protect their data and infrastructure.
+      Currently, I'm a Senior Systems Engineer there — advising customers on data protection and infrastructure,
+      speaking at community events, and generally being the person in the room who draws the diagram on the whiteboard.
     </p>
     <p>
       Outside of work, I enjoy tinkering with technology and this website —
@@ -84,24 +86,67 @@ image: /assets/img/IMG_1249.jpeg
   </div>
 </section>
 
-<!-- SKILLS -->
-<section class="section" id="skills">
+<!-- SPEAKING -->
+{% assign today = site.time | date: "%Y-%m-%d" %}
+{% assign upcoming_talks = "" | split: "" %}
+{% assign past_talks = "" | split: "" %}
+{% for talk in site.talks %}
+  {% assign talk_date = talk.date | date: "%Y-%m-%d" %}
+  {% if talk_date >= today %}
+    {% assign upcoming_talks = upcoming_talks | push: talk %}
+  {% else %}
+    {% assign past_talks = past_talks | push: talk %}
+  {% endif %}
+{% endfor %}
+{% assign upcoming_talks = upcoming_talks | sort: "date" %}
+{% assign past_talks = past_talks | sort: "date" | reverse %}
+{% assign next_upcoming = upcoming_talks | first %}
+{% assign display_talks = past_talks | slice: 0, 3 %}
+{% if next_upcoming %}{% assign display_talks = display_talks | unshift: next_upcoming %}{% endif %}
+{% if display_talks.size > 0 %}
+<section class="section" id="speaking">
   <div class="container">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-list">
-      {% for category in site.data.skills %}
-      <div>
-        <p class="skill-category-name">{{ category.category }}</p>
-        <div class="skill-tags">
-          {% for item in category.items %}
-          <span class="skill-tag">{{ item }}</span>
-          {% endfor %}
+    <h2 class="section-title">Speaking</h2>
+    <div class="talk-list">
+      {% for talk in display_talks %}
+      {% assign talk_date = talk.date | date: "%Y-%m-%d" %}
+      <div class="talk-card {% if talk_date >= today %}talk-upcoming{% endif %}">
+        <div class="talk-meta-top">
+          <div class="talk-meta-left">
+            {% if talk_date >= today %}<span class="talk-badge">Upcoming</span>{% endif %}
+            <span class="talk-type">{{ talk.type }}</span>
+          </div>
+          {% if talk.lang %}
+          <span class="talk-lang" aria-label="Language: {{ talk.lang }}">{% if talk.lang == 'de' %}🇩🇪{% elsif talk.lang == 'en' %}🇬🇧{% endif %}</span>
+          {% endif %}
         </div>
+        <p class="talk-title">{{ talk.title }}</p>
+        <div class="talk-details">
+          {% if talk.event_url %}
+          <a href="{{ talk.event_url }}" class="talk-event" target="_blank" rel="noopener noreferrer">{{ talk.event }}</a>
+          {% else %}
+          <span class="talk-event">{{ talk.event }}</span>
+          {% endif %}
+          <span class="timeline-sep" aria-hidden="true">·</span>
+          <span class="talk-location">{{ talk.location }}</span>
+          <span class="timeline-sep" aria-hidden="true">·</span>
+          <span class="talk-date">{{ talk.date | date: "%B %d, %Y" }}{% if talk.time %}, {{ talk.time }}{% endif %}</span>
+        </div>
+        {% if talk.co_speakers %}
+        <p class="talk-speakers">
+          with
+          {% for speaker in talk.co_speakers %}{{ speaker.name }} ({{ speaker.org }}){% unless forloop.last %}, {% endunless %}{% endfor %}
+        </p>
+        {% endif %}
+        {% if talk.action_url %}
+        <a href="{{ talk.action_url }}" class="talk-action" target="_blank" rel="noopener noreferrer">{{ talk.action_label | default: "Details" }}</a>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
 <!-- BLOG (only shown when posts exist) -->
 {% if site.posts.size > 0 %}
@@ -121,4 +166,86 @@ image: /assets/img/IMG_1249.jpeg
   </div>
 </section>
 {% endif %}
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-list">
+      {% for category in site.data.skills %}
+      <div>
+        <p class="skill-category-name">{{ category.category }}</p>
+        <div class="skill-tags">
+          {% for item in category.items %}
+          <span class="skill-tag">{{ item }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+{% if site.data.certifications.size > 0 %}
+<section class="section" id="certifications">
+  <div class="container">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-list">
+      {% for cert in site.data.certifications %}
+      <div class="cert-card">
+        <div class="cert-badge" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/>
+            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <p class="cert-name">
+            {% if cert.url %}
+            <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
+            {% else %}
+            {{ cert.name }}
+            {% endif %}
+          </p>
+          <p class="cert-meta">{{ cert.issuer }} · {{ cert.issued }}</p>
+          {% if cert.skills %}
+          <div class="cert-skills">
+            {% for skill in cert.skills %}
+            <span class="skill-tag">{{ skill }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- COMMUNITY -->
+{% if site.data.volunteer.size > 0 %}
+<section class="section" id="community">
+  <div class="container">
+    <h2 class="section-title">Community & Volunteer</h2>
+    <div class="timeline">
+      {% for item in site.data.volunteer %}
+      <div class="timeline-item">
+        <h3 class="timeline-role">{{ item.role }}</h3>
+        <div class="timeline-meta">
+          <span class="timeline-company">{{ item.org }}</span>
+          <span class="timeline-sep" aria-hidden="true">·</span>
+          <span class="timeline-period">{{ item.period }}</span>
+        </div>
+        {% if item.description %}
+        <p class="timeline-desc">{{ item.description }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 </main>
