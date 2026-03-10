@@ -85,3 +85,7 @@ The `webp` package is needed for `jekyll-webp` to generate WebP images.
 ## Git workflow
 - SSH key: `GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes"`
 - Work happens in feature branches (worktrees), PR to master
+
+
+## Codex notes
+- Added by Codex: Set up per-page `noindex` support via front matter (`noindex: true`) and use it on `/impressum/` and `/datenschutz/` to emit `<meta name="robots" content="noindex">` in `_includes/header.html`.
