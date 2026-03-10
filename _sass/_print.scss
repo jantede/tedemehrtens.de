@@ -1,0 +1,76 @@
+// ============================================================
+// PRINT STYLES
+// Applied when printing blog posts, about page, and similar content pages.
+// ============================================================
+
+@media print {
+  // Hide navigation, interactive UI and decorative elements
+  .navbar,
+  .skip-link,
+  .scroll-hint,
+  .hero-canvas,
+  .e-canvas,
+  .theme-picker,
+  .post-back,
+  .post-footer,
+  .post-related,
+  .footer,
+  .btn {
+    display: none !important;
+  }
+
+  // Basic page setup
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+    line-height: 1.6;
+    transition: none;
+  }
+
+  // Remove spotlight pseudo-element
+  body::before {
+    display: none;
+  }
+
+  // Remove fixed positioning side effects
+  .post-page,
+  .page-wrap {
+    padding-top: 0;
+  }
+
+  // Links: show href for external links in post body
+  .post-body a[href^="http"]::after,
+  .post-body a[href^="https"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+    word-break: break-all;
+  }
+
+  // Don't annotate internal/anchor links
+  .post-body a[href^="/"]::after,
+  .post-body a[href^="#"]::after {
+    content: none;
+  }
+
+  // Keep images within page
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+
+  // Avoid page breaks inside key blocks
+  .timeline-item,
+  .cert-card,
+  .talk-card,
+  pre,
+  blockquote {
+    page-break-inside: avoid;
+  }
+
+  // Section headings start on same page as first content
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}

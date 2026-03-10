@@ -1,0 +1,24 @@
+{% assign post_url = page.url | replace:'index.html','' | absolute_url %}
+{% assign post_description = page.description | default: page.excerpt | strip_html | normalize_whitespace %}
+{% assign post_author_url = site.url %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",{% if page.last_modified_at %}
+  "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
+  "author": {
+    "@type": "Person",
+    "name": {{ site.author | jsonify }},
+    "url": {{ post_author_url | jsonify }}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ post_url | jsonify }}
+  },
+  "url": {{ post_url | jsonify }},
+  "description": {{ post_description | jsonify }}{% if page.image %},
+  "image": {{ page.image | absolute_url | jsonify }}{% endif %}
+}
+</script>

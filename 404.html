@@ -7,15 +7,6 @@ noindex: true
 ---
 {% include header.html %}
 
-<style>
-  .e-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
-  .e-page { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: calc(var(--nav-height) + 2rem) 1.5rem 4rem; position: relative; z-index: 1; pointer-events: none; }
-  .e-code { font-size: clamp(7rem, 22vw, 14rem); font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--text); margin-bottom: 0.15em; }
-  .e-title { font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
-  .e-desc { color: var(--text-muted); font-size: 0.95rem; max-width: 340px; line-height: 1.65; margin-bottom: 2rem; }
-  .e-action { pointer-events: all; }
-</style>
-
 <canvas class="e-canvas" id="errorCanvas" aria-hidden="true"></canvas>
 
 <main class="e-page" id="main-content">
@@ -26,26 +17,6 @@ noindex: true
 </main>
 
 <script src="/assets/js/constellation.js?v={{ site.time | date: '%s' }}"></script>
-<script>
-  (function () {
-    const canvas = document.getElementById('errorCanvas');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (!canvas || typeof window.createConstellation !== 'function') return;
-
-    window.createConstellation({
-      canvas,
-      nodeCount: 65,
-      maxEdge: 120,
-      revealRadius: 200,
-      ghostNode: 0.06,
-      ghostEdge: 0.04,
-      reduceMotion,
-      colorResolver: () => {
-        const dark = document.documentElement.dataset.theme === 'dark';
-        return dark ? [88, 166, 255] : [9, 105, 218];
-      },
-    });
-  })();
-</script>
+<script src="/assets/js/404-constellation.js?v={{ site.time | date: '%s' }}"></script>
 
 {% include footer.html %}
