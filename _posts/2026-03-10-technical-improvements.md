@@ -2,7 +2,7 @@
 layout: post
 title: "Under the Hood: What Changed Since the Relaunch"
 date: 2026-03-10 14:00:00 +0100
-description: "A look at all the technical improvements made to this site since the initial relaunch — compression fixes, WebP automation, CSS refactoring, linting, and proper CI/CD."
+description: "A look at all the technical improvements made to this site since the initial relaunch — compression fixes, WebP automation, CSS refactoring, linting, CI/CD, and a round of visual polish."
 tags:
   - jekyll
   - cloudflare
@@ -106,6 +106,16 @@ PR reviews are now handled by [CodeRabbit](https://coderabbit.ai/), which posts 
 Every page's footer now has a direct link to its source file on GitHub. It uses Jekyll's `page.path` variable to build the URL, so for this post it points directly to the `.md` file in the repo.
 
 Small thing, but I like it. If something reads wrong, it's one click to see the raw Markdown or suggest a fix.
+
+## Visual Polish
+
+After all the infrastructure work, a round of visual improvements.
+
+**Hero tagline.** The subtitle under my name used to read "Senior Systems Engineer at Veeam" — accurate, but a bit flat for a homepage. It now reads *Trusted tech advisor. On stage, in the room, on the whiteboard.* A bit more character, a bit more honest about what I actually do day to day.
+
+**Speaking cards.** The talk cards got two additions. First, a small language flag (🇩🇪 or 🇬🇧) in the top-right corner, set via a `lang:` field in the talk's front matter. Useful when the portfolio has talks in multiple languages — the visitor knows before clicking. Second, an optional action button — a pill-style link at the bottom of the card for things like recordings, slides, or event pages. Controlled via `action_label` and `action_url` in front matter, so it's easy to add retroactively once a recording goes live.
+
+**Per-section colour accents.** The section titles (About, Experience, Speaking, Skills, Certifications, Community) now each have a short coloured bar underneath — three pixels, two rems wide. Each section gets a distinct colour, defined as CSS custom properties with separate light and dark values. Nothing dramatic, just enough to break up the otherwise monochrome page.
 
 ---
 
