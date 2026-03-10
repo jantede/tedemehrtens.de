@@ -52,9 +52,25 @@ jobs:
           script: |
             const previewUrl = '${{ steps.preview.outputs.preview_url }}';
             const body = `### Cloudflare Preview Deployed\n\n**Preview URL:** ${previewUrl}\n\nThis preview will be cleaned up when the PR is closed.`;
-            await github.rest.issues.createComment({
+            const marker = '### Cloudflare Preview Deployed';
+            const comments = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body
             });
+            const existing = comments.data.find(c => c.user.type === 'Bot' && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            }
