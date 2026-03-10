@@ -6,6 +6,7 @@ date: 2026-03-18
 time: "14:55"
 location: "Osnabrück"
 type: Panel
+lang: de
 co_speakers:
   - name: André Walkenhorst
     org: Häcker Küchen

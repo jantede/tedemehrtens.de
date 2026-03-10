@@ -6,6 +6,7 @@ date: 2025-06-26
 time: "10:00"
 location: Online
 type: Webinar
+lang: de
 co_speakers:
   - name: Kurt Brunschweiger
     org: ACP

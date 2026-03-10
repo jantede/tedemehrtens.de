@@ -34,8 +34,21 @@
 .talk-meta-top {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   margin-bottom: 0.4rem;
+}
+
+.talk-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.talk-lang {
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .talk-badge {
@@ -91,4 +104,22 @@
   color: var(--text-muted);
   font-size: 0.825rem;
   margin-top: 0.1rem;
+}
+
+.talk-action {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--accent);
+    color: #fff;
+  }
 }

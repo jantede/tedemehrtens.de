@@ -5,6 +5,7 @@ event_url: https://www.pco-online.de/kongress2024
 date: 2024-09-26
 location: "Osnabrück"
 type: "Conference Talk"
+lang: de
 co_speakers:
   - name: Thomas Rochner
     org: Wasabi

@@ -111,8 +111,13 @@ image: /assets/img/IMG_1249.jpeg
       {% assign talk_date = talk.date | date: "%Y-%m-%d" %}
       <div class="talk-card {% if talk_date >= today %}talk-upcoming{% endif %}">
         <div class="talk-meta-top">
-          {% if talk_date >= today %}<span class="talk-badge">Upcoming</span>{% endif %}
-          <span class="talk-type">{{ talk.type }}</span>
+          <div class="talk-meta-left">
+            {% if talk_date >= today %}<span class="talk-badge">Upcoming</span>{% endif %}
+            <span class="talk-type">{{ talk.type }}</span>
+          </div>
+          {% if talk.lang %}
+          <span class="talk-lang" aria-label="Language: {{ talk.lang }}">{% if talk.lang == 'de' %}🇩🇪{% elsif talk.lang == 'en' %}🇬🇧{% endif %}</span>
+          {% endif %}
         </div>
         <p class="talk-title">{{ talk.title }}</p>
         <div class="talk-details">
@@ -131,6 +136,9 @@ image: /assets/img/IMG_1249.jpeg
           with
           {% for speaker in talk.co_speakers %}{{ speaker.name }} ({{ speaker.org }}){% unless forloop.last %}, {% endunless %}{% endfor %}
         </p>
+        {% endif %}
+        {% if talk.action_url %}
+        <a href="{{ talk.action_url }}" class="talk-action" target="_blank" rel="noopener noreferrer">{{ talk.action_label | default: "Details" }}</a>
         {% endif %}
       </div>
       {% endfor %}
