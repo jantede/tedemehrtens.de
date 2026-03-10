@@ -22,6 +22,14 @@
   --nav-height:      60px;
   --max-width:       860px;
   --transition:      0.2s ease;
+
+  // Section accent colours (light)
+  --c-about:          #0969da;
+  --c-experience:     #8250df;
+  --c-speaking:       #1a7f37;
+  --c-skills:         #bc4c00;
+  --c-certifications: #bf3989;
+  --c-community:      #0598bc;
 }
 
 [data-theme="dark"] {
@@ -38,4 +46,12 @@
   --spotlight-g:     166;
   --spotlight-b:     255;
   --spotlight-o:     0.07;
+
+  // Section accent colours (dark)
+  --c-about:          #58a6ff;
+  --c-experience:     #bc8cff;
+  --c-speaking:       #3fb950;
+  --c-skills:         #f0883e;
+  --c-certifications: #f778ba;
+  --c-community:      #39c5cf;
 }
