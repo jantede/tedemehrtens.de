@@ -1,3 +1,11 @@
+- name: Veeam Certified Architect (VMCA)
+  issuer: Veeam Software
+  issued: "2024"
+  url: https://www.veeam.com/vmca.html
+  skills:
+    - Solution Architecture
+    - Data Protection
+
 - name: Veeam Certified Engineer (VMCE)
   issuer: Veeam Software
   issued: "January 2024"
