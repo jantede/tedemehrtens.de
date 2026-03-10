@@ -14,6 +14,8 @@ A few days ago I wrote about [how this site is built](/2026/03/05/how-this-site-
 
 Turns out launching a site is the easy part — the week after is when you find all the things you got subtly wrong. Some of it was rust, some of it was just that the web moved on while I wasn't looking. Either way, a lot of small fixes and improvements piled up quickly.
 
+One thread running through all of it: I love when things are fast, lean, and privacy-friendly by default. No bloated frontend libraries, no unnecessary third-party requests, no tracking that nobody asked for. KISS — keep it simple, stupid. That's been something of a personal mantra throughout my IT career and it shows up everywhere here — in the choice of a static site over WordPress, in serving WebP over JPEG, in making YouTube embeds opt-in. The web doesn't need to be heavy to be good.
+
 Here's what changed on the technical side.
 
 ## The Header That Killed Compression
