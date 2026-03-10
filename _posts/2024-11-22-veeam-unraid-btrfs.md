@@ -9,13 +9,15 @@ tags:
   - homelab
 ---
 ## ⚠️ Notice
+
 This workaround does not work anymore on the Veeam Software Appliance. Also, this is not something you should use in production, but just a nice workaround for some home deployments. I'm just trying to push the boundaries a bit 😬
 
 This is so niche that probably nobody's ever gonna use it… But that's what I also sometimes think about other peoples posts that then inspire me.
 
 ---
 
-_From the series: Problems nobody else has but me_
+From the series: _Problems nobody else has but me_
+
 ## Background
 
 I run a private Unraid server that I use not only for media storage but also as a host for several Docker containers and VMs. For backups I use Veeam Backup & Replication Enterprise Plus — though this guide also works with the free Community Edition, with the exception of backing up to cloud storage. Veeam itself runs on one of those VMs.
@@ -66,11 +68,11 @@ Both scripts need access to the root shell of the Unraid server. This access is 
 
 The easiest way to generate an SSH key on the backup server is with [puttygen.exe](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). While you're there, also grab `plink.exe` — you'll need it later.
 
-![](/assets/img/posts/cleanshot_2024-11-22_at_13.19.53.png)
+![PuTTYgen key generation dialog](/assets/img/posts/cleanshot_2024-11-22_at_13.19.53.png)
 
 Open puttygen and click "Generate", then move your mouse around the window to generate entropy. You should get a key pair.
 
-![](/assets/img/posts/cleanshot_2024-11-22_at_13.21.23.png)
+![Generated SSH key pair in PuTTYgen](/assets/img/posts/cleanshot_2024-11-22_at_13.21.23.png)
 
 Copy the public key shown in the top field. In Unraid, paste it under _Users → Management Access → root → SSH Authorized Keys_. If the field isn't empty, just add your key as a new line at the bottom.
 
@@ -78,7 +80,7 @@ Save the private key somewhere on the backup server — this creates a `.ppk` fi
 
 Finally, make the private key available to the Veeam service via the Credential Manager. Go to _Add → SSH private key_ and create an account with the username `root`. Under "Private Key", select the `.ppk` file you just saved. No further settings are required. It's a good idea to add a comment so you can distinguish this credential from others.
 
-![](/assets/img/posts/cleanshot_2024-11-22_at_13.29.08.png)
+![Veeam Credential Manager – SSH private key entry](/assets/img/posts/cleanshot_2024-11-22_at_13.29.08.png)
 
 ---
 
@@ -88,7 +90,7 @@ Now add the Unraid server as a data source in Veeam: _Inventory → Unstructured
 
 The New File Server dialog will appear. If you haven't done so already, add Unraid as a managed server by clicking _Add New → Linux Server_.
 
-![](/assets/img/posts/cleanshot_2024-11-22_at_13.32.16.png)
+![Veeam New File Server dialog for Unraid](/assets/img/posts/cleanshot_2024-11-22_at_13.32.16.png)
 
 Configure the DNS name or IP address of the Unraid server, then select the credential you just created. Click through the rest of the dialog.
 
@@ -130,7 +132,7 @@ Almost done. Create the backup job in Veeam under _Home → Jobs (right-click) �
 
 In the next step, select the backup repository. Under _Advanced → Scripts_, add both scripts and configure them to run on every session.
 
-![](/assets/img/posts/cleanshot_2024-11-22_at_13.46.07.png)
+![Veeam backup job – Advanced Scripts configuration](/assets/img/posts/cleanshot_2024-11-22_at_13.46.07.png)
 
 I'd also recommend enabling encryption if you're backing up to cloud storage — you'll find this option in the same window under _Storage_.
 
@@ -144,4 +146,4 @@ Start the job. Before the actual backup begins, Docker will be briefly stopped a
 
 Because the SSH session uses the `&&` operator to chain commands, any error on the remote system will automatically surface as a warning in the Veeam job at that point.
 
-![](/assets/img/posts/cleanshot_2024-11-22_at_13.49.00.png)
+![Veeam job log showing pre-job script completed successfully](/assets/img/posts/cleanshot_2024-11-22_at_13.49.00.png)

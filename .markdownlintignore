@@ -1,0 +1,7 @@
+_site/
+vendor/
+node_modules/
+README.md
+CLAUDE.md
+_templates/
+_archive/

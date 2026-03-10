@@ -83,7 +83,7 @@ assets = { directory = "./_site" }
 
 And the Cloudflare build settings:
 
-```
+```text
 Build command:  bundle exec jekyll build
 Deploy command: npx wrangler deploy
 ```
