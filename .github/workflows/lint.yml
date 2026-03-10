@@ -2,6 +2,7 @@ name: Lint
 
 on:
   push:
+  pull_request:
 
 jobs:
   lint:
@@ -30,6 +31,7 @@ jobs:
   build-and-lint:
     name: Build site and lint output
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
 
