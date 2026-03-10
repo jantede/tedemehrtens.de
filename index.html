@@ -103,6 +103,46 @@ image: /assets/img/IMG_1249.jpeg
   </div>
 </section>
 
+<!-- SPEAKING -->
+{% assign sorted_talks = site.talks | sort: "date" | reverse %}
+{% if sorted_talks.size > 0 %}
+<section class="section" id="speaking">
+  <div class="container">
+    <h2 class="section-title">Speaking</h2>
+    <div class="talk-list">
+      {% for talk in sorted_talks %}
+      {% assign talk_date = talk.date | date: "%s" | plus: 0 %}
+      {% assign today = site.time | date: "%s" | plus: 0 %}
+      <div class="talk-card {% if talk_date >= today %}talk-upcoming{% endif %}">
+        <div class="talk-meta-top">
+          {% if talk_date >= today %}<span class="talk-badge">Upcoming</span>{% endif %}
+          <span class="talk-type">{{ talk.type }}</span>
+        </div>
+        <p class="talk-title">{{ talk.title }}</p>
+        <div class="talk-details">
+          {% if talk.event_url %}
+          <a href="{{ talk.event_url }}" class="talk-event" target="_blank" rel="noopener noreferrer">{{ talk.event }}</a>
+          {% else %}
+          <span class="talk-event">{{ talk.event }}</span>
+          {% endif %}
+          <span class="timeline-sep" aria-hidden="true">·</span>
+          <span class="talk-location">{{ talk.location }}</span>
+          <span class="timeline-sep" aria-hidden="true">·</span>
+          <span class="talk-date">{{ talk.date | date: "%B %d, %Y" }}{% if talk.time %}, {{ talk.time }}{% endif %}</span>
+        </div>
+        {% if talk.co_speakers %}
+        <p class="talk-speakers">
+          with
+          {% for speaker in talk.co_speakers %}{{ speaker.name }} ({{ speaker.org }}){% unless forloop.last %}, {% endunless %}{% endfor %}
+        </p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <!-- CERTIFICATIONS -->
 {% if site.data.certifications.size > 0 %}
 <section class="section" id="certifications">
