@@ -12,4 +12,6 @@ co_speakers:
     org: ACP
   - name: Stefan Scheck
     org: Sophos
+action_label: Aufzeichnung ansehen
+action_url: https://us06web.zoom.us/webinar/register/WN_DysIeeVwRvi5oPYC9Z00Cw#/registration
 ---
