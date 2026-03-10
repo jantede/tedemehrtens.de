@@ -110,7 +110,7 @@ image: /assets/img/IMG_1249.jpeg
   <div class="container">
     <h2 class="section-title">Speaking</h2>
     <div class="talk-list">
-      {% for talk in sorted_talks %}
+      {% for talk in sorted_talks limit:5 %}
       {% assign talk_date = talk.date | date: "%s" | plus: 0 %}
       {% assign today = site.time | date: "%s" | plus: 0 %}
       <div class="talk-card {% if talk_date >= today %}talk-upcoming{% endif %}">
