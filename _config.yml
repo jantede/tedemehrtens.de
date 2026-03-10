@@ -47,7 +47,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /assets/img/IMG_1249.jpeg
+      image: /assets/img/default.png
       lang: de
   - scope:
       path: ""

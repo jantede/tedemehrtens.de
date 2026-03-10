@@ -12,7 +12,7 @@
   {% endif %}
   {% assign seo_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace %}
   {% assign canonical_url = page.url | replace:'index.html','' | absolute_url %}
-  {% assign seo_image_path = page.image | default: site.image | default: '/assets/img/IMG_1249.jpeg' %}
+  {% assign seo_image_path = page.image | default: site.image %}
   {% assign seo_image = seo_image_path | absolute_url %}
 
   <title>{{ seo_title }}</title>
