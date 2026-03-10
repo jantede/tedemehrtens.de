@@ -111,11 +111,9 @@ Small thing, but I like it. If something reads wrong, it's one click to see the 
 
 After all the infrastructure work, a round of visual improvements.
 
-**Hero tagline.** The subtitle under my name used to read "Senior Systems Engineer at Veeam" — accurate, but a bit flat for a homepage. It now reads *Trusted tech advisor. On stage, in the room, on the whiteboard.* A bit more character, a bit more honest about what I actually do day to day.
+**Speaking cards.** I added some talk cards so you can see the public events I attend(ed). You'll probably also find recordings there in future
 
-**Speaking cards.** The talk cards got two additions. First, a small language flag (🇩🇪 or 🇬🇧) in the top-right corner, set via a `lang:` field in the talk's front matter. Useful when the portfolio has talks in multiple languages — the visitor knows before clicking. Second, an optional action button — a pill-style link at the bottom of the card for things like recordings, slides, or event pages. Controlled via `action_label` and `action_url` in front matter, so it's easy to add retroactively once a recording goes live.
-
-**Per-section colour accents.** The section titles (About, Experience, Speaking, Skills, Certifications, Community) now each have a short coloured bar underneath — three pixels, two rems wide. Each section gets a distinct colour, defined as CSS custom properties with separate light and dark values. Nothing dramatic, just enough to break up the otherwise monochrome page.
+**Per-section colour accents.** The section titles (About, Experience, Speaking, Skills, Certifications, Community) now each have a short coloured bar underneath. Each section gets a distinct colour, nothing dramatic, just enough to break up the otherwise monochrome page.
 
 ---
 
