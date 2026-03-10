@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Under the Hood: What Changed Since the Relaunch"
-date: 2026-03-10 18:00:00 +0100
+date: 2026-03-10 14:00:00 +0100
 description: "A look at all the technical improvements made to this site since the initial relaunch — compression fixes, WebP automation, CSS refactoring, linting, and proper CI/CD."
 tags:
   - jekyll
