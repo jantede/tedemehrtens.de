@@ -1,0 +1,28 @@
+{% assign youtube_source = include.youtube_url | default: page.youtube_url %}
+{% assign youtube_title = include.title | default: page.title | default: 'YouTube video' %}
+{% assign youtube_video_id = '' %}
+
+{% if youtube_source contains 'youtu.be/' %}
+  {% assign youtube_video_id = youtube_source | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first %}
+{% elsif youtube_source contains 'youtube.com/watch' and youtube_source contains 'v=' %}
+  {% assign youtube_video_id = youtube_source | split: 'v=' | last | split: '&' | first %}
+{% elsif youtube_source contains 'youtube.com/embed/' %}
+  {% assign youtube_video_id = youtube_source | split: 'youtube.com/embed/' | last | split: '?' | first | split: '&' | first %}
+{% endif %}
+
+{% if youtube_video_id != '' %}
+<section class="youtube-embed" data-youtube-id="{{ youtube_video_id }}" data-youtube-title="{{ youtube_title | escape }}">
+  <div class="youtube-consent" data-youtube-consent-box>
+    <h2>Video ansehen</h2>
+    <p>Zum Abspielen wird eine Verbindung zu YouTube (Google) aufgebaut. Dabei können personenbezogene Daten wie Ihre IP-Adresse übertragen werden.</p>
+    <div class="youtube-consent-actions">
+      <button type="button" class="btn" data-youtube-allow>Einmal erlauben</button>
+      <button type="button" class="btn btn-secondary" data-youtube-allow-remember>Erlauben &amp; merken</button>
+    </div>
+  </div>
+  <div class="youtube-frame-wrap" data-youtube-frame-wrap hidden></div>
+  <noscript>
+    <p>JavaScript ist deaktiviert. Das Video können Sie direkt auf YouTube ansehen: <a href="{{ youtube_source }}" rel="noopener noreferrer" target="_blank">{{ youtube_title }}</a></p>
+  </noscript>
+</section>
+{% endif %}
