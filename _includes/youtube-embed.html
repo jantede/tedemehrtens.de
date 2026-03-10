@@ -13,16 +13,16 @@
 {% if youtube_video_id != '' %}
 <section class="youtube-embed" data-youtube-id="{{ youtube_video_id }}" data-youtube-title="{{ youtube_title | escape }}">
   <div class="youtube-consent" data-youtube-consent-box>
-    <h2>Video ansehen</h2>
-    <p>Zum Abspielen wird eine Verbindung zu YouTube (Google) aufgebaut. Dabei können personenbezogene Daten wie Ihre IP-Adresse übertragen werden.</p>
+    <h2>Watch Video</h2>
+    <p>Playing the video will establish a connection to YouTube (Google). Personal data such as your IP address may be transmitted.</p>
     <div class="youtube-consent-actions">
-      <button type="button" class="btn" data-youtube-allow>Einmal erlauben</button>
-      <button type="button" class="btn btn-secondary" data-youtube-allow-remember>Erlauben &amp; merken</button>
+      <button type="button" class="btn" data-youtube-allow>Allow Once</button>
+      <button type="button" class="btn btn-secondary" data-youtube-allow-remember>Allow &amp; Remember</button>
     </div>
   </div>
   <div class="youtube-frame-wrap" data-youtube-frame-wrap hidden></div>
   <noscript>
-    <p>JavaScript ist deaktiviert. Das Video können Sie direkt auf YouTube ansehen: <a href="{{ youtube_source }}" rel="noopener noreferrer" target="_blank">{{ youtube_title }}</a></p>
+    <p>JavaScript is disabled. You can watch the video here: <a href="{{ youtube_source }}" rel="noopener noreferrer" target="_blank">{{ youtube_title }}</a></p>
   </noscript>
 </section>
 {% endif %}
