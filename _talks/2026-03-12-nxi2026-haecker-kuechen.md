@@ -12,8 +12,8 @@ co_speakers:
     org: Häcker Küchen
   - name: Christian van Eickelen
     org: pco
-action_label: Jetzt anmelden
-action_url: https://www.pco-online.de/nxi2026
+#action_label: Jetzt anmelden
+#action_url: https://www.pco-online.de/nxi2026
 ---
 
 Panelvortrag über die ganzheitliche Umsetzung von Backup und automatisiertem Restore bei Häcker Küchen — von der Planung über die Plattformwahl bis zum laufenden Betrieb.
