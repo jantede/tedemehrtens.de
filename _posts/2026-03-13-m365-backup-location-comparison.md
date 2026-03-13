@@ -40,6 +40,7 @@ The rest maps cleanly to M365: your backup is copy 1, a second storage target is
 ## So, where to store your backups then?
 
 ### All on-prem
+
 On-prem backup sounds straightforward: your data, your hardware, your control. In practice it's often where good intentions meet poor execution.
 
 The storage problem is covered above — block storage isn't the right fit for M365 backup data, and S3-compatible object storage on-prem fixes that. But it doesn't fix the bigger issues.
@@ -49,6 +50,7 @@ M365 is a cloud workload. Restoring data back into Exchange Online or SharePoint
 There's also the 3-2-1 problem: an on-prem-only setup gives you copy 2 at best, in the same location. Without a multi-site setup, copy 3 is simply missing — and even then, the internet dependency on restore remains. A second on-premises location solves the offsite problem — but not the others. Restore still runs through your internet connection, and API rate limits don't care where your storage sits.
 
 ### Hybrid
+
 A local backup copy for fast access, a cloud copy offsite — the 3-2-1 structure is built into the design by default.
 
 One hard requirement: **S3-compatible object storage on-prem is not optional**. Veeam doesn't support backup copies from block storage to S3, so without an S3-compatible local target, hybrid simply doesn't work. This is worth factoring into your infrastructure planning before committing to this approach.
@@ -78,6 +80,7 @@ The 3-2-1 structure is handled by the service. Immutability is built in. Separat
 The tradeoff is control. You're trusting a third party with your backup data — vendor lock-in and data residency requirements are worth verifying upfront. For most organizations, that's an acceptable trade. For some, it isn't. At Veeam, we solve this by offering to download all of your backups when required. Make sure the service you're using has an option like this, so your data won't be held hostage.
 
 ## But what about API limits?
+
 As mentioned earlier, API rate limits are a platform-level constraint that affects every backup solution equally — no storage architecture changes that. Backup windows, restore speed, and throughput are all bound by what Microsoft allows through the API.
 
 The exception is **Microsoft Backup Storage (MBS)**. MBS bypasses the traditional API path entirely, which makes it significantly faster — especially for large-scale restores. The tradeoff: it's less granular than a traditional backup. Think of it less as a backup and more as the only realistic DR option for M365 at scale.
