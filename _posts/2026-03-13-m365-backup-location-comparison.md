@@ -35,7 +35,7 @@ The extended version we use at Veeam adds two more digits: 1 offline or air-gapp
 
 For M365, the offline copy deserves special attention: **immutability is non-negotiable**. Ransomware targeting backup data is *not* a theoretical scenario. If your backup storage can be written to, it can be encrypted. S3 Object Lock — or any equivalent immutability mechanism — should be a hard requirement, not an afterthought.
 
-The rest maps cleanly to M365: your backup is copy 1, a second storage target is copies 2 and 3, and offsite is naturally covered if you're using cloud storage. The framework holds — you just have to apply it deliberately.
+The rest maps cleanly to M365: your production data is copy 1, your backups provide copy 2 and 3, and offsite is naturally covered, because your backups are always stored outside M365. The framework holds — you just have to apply it deliberately.
 
 ## So, where to store your backups then?
 
