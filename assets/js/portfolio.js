@@ -154,7 +154,7 @@
     });
 
     document.addEventListener('click', (event) => {
-      if (!navLinks.contains(event.target) && event.target !== navToggle) closeMenu();
+      if (!navLinks.contains(event.target) && !navToggle.contains(event.target)) closeMenu();
     });
   }
 
