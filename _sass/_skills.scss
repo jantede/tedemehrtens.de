@@ -29,13 +29,18 @@
   border-radius: 20px;
   font-size: 0.825rem;
   color: var(--text);
-  transition: all 0.2s ease;
+  transition:
+    background 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out),
+    transform 0.2s var(--ease-out);
   cursor: default;
   user-select: none;
 
   &:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
+    background: color-mix(in srgb, var(--section-color, var(--accent)) 12%, var(--bg-secondary));
+    border-color: var(--section-color, var(--accent));
+    color: var(--section-color, var(--accent));
+    transform: translateY(-1px);
   }
 }

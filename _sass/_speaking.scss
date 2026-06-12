@@ -15,19 +15,16 @@
 }
 
 .talk-card {
+  @include card-base;
   padding: 1.1rem 1.25rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  transition: border-color 0.2s ease;
 
   &:hover {
-    border-color: var(--accent);
+    @include card-hover;
   }
 
   &.talk-upcoming {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 5%, var(--bg-secondary));
+    border-color: var(--section-color, var(--accent));
+    background: color-mix(in srgb, var(--section-color, var(--accent)) 6%, var(--card-bg));
   }
 }
 
@@ -54,7 +51,7 @@
 .talk-badge {
   display: inline-block;
   padding: 0.15rem 0.55rem;
-  background: var(--accent);
+  background: var(--section-color, var(--accent));
   color: #fff;
   border-radius: 20px;
   font-size: 0.72rem;
@@ -86,7 +83,7 @@
 }
 
 .talk-event {
-  color: var(--accent);
+  color: var(--section-color, var(--accent));
   font-weight: 500;
   text-decoration: none;
 
@@ -110,16 +107,16 @@
   display: inline-block;
   margin-top: 0.6rem;
   padding: 0.25rem 0.75rem;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--section-color, var(--accent));
   border-radius: 20px;
-  color: var(--accent);
+  color: var(--section-color, var(--accent));
   font-size: 0.78rem;
   font-weight: 500;
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
 
   &:hover {
-    background: var(--accent);
+    background: var(--section-color, var(--accent));
     color: #fff;
   }
 }

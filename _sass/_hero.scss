@@ -32,6 +32,23 @@
     z-index: 0;
   }
 
+  // Soft accent glow in the dark area — gives the hero depth
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(88, 166, 255, 0.14),
+      transparent 65%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .container {
     display: flex;
     justify-content: flex-end;
@@ -73,6 +90,33 @@
   z-index: 1;
 }
 
+// Staged entrance — elements rise in one after another.
+// Reduced motion: global override collapses durations, content appears instantly.
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-eyebrow,
+.hero-name,
+.hero-title,
+.hero-actions,
+.scroll-hint {
+  animation: hero-rise 0.7s var(--ease-out) both;
+}
+
+.hero-eyebrow  { animation-delay: 0.05s; }
+.hero-name     { animation-delay: 0.15s; }
+.hero-title    { animation-delay: 0.28s; }
+.hero-actions  { animation-delay: 0.42s; }
+.scroll-hint   { animation-delay: 0.9s; }
+
 // Hero text is always light — it sits on a dark photo
 .hero-eyebrow {
   font-size: 0.875rem;
@@ -84,19 +128,25 @@
 }
 
 .hero-name {
-  font-size: clamp(2.5rem, 8vw, 4.25rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
   margin-bottom: 1rem;
   color: #fff;
+
+  // Subtle gradient sheen on the name
+  background: linear-gradient(120deg, #ffffff 55%, #9ecbff 85%, #7eb8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-title {
   font-size: clamp(1rem, 3vw, 1.3rem);
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 2.5rem;
-  line-height: 1.4;
+  line-height: 1.45;
 
   a {
     color: #7eb8ff;
@@ -130,6 +180,10 @@
       );
     }
 
+    &::before {
+      display: none;
+    }
+
     .container {
       justify-content: flex-start;
       padding-bottom: 3rem;
@@ -146,13 +200,23 @@
   }
 }
 
+// Tablet: give the text a bit more room
+@media (min-width: 641px) and (max-width: 899px) {
+  .hero-inner {
+    width: 64%;
+  }
+}
+
 .scroll-hint {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   color: rgba(255, 255, 255, 0.45);
   font-size: 0.8rem;
-  animation: nudge 2.5s ease-in-out infinite;
+
+  svg {
+    animation: nudge 2.5s ease-in-out infinite;
+  }
 }
 
 @keyframes nudge {

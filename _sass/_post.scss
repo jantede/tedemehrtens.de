@@ -17,10 +17,11 @@
   font-size: 0.825rem;
   font-weight: 500;
   margin-bottom: 2.5rem;
-  transition: color var(--transition);
+  transition: color var(--transition), gap 0.2s var(--ease-out);
 
   &:hover {
-    color: var(--text);
+    color: var(--accent);
+    gap: 0.5rem;
   }
 }
 
@@ -53,10 +54,10 @@
 }
 
 .post-title {
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
   margin-bottom: 1rem;
   color: var(--text);
 }
@@ -82,15 +83,15 @@
   h2,
   h3,
   h4 {
-    font-weight: 600;
-    margin-top: 2.5rem;
+    font-weight: 700;
+    margin-top: 2.75rem;
     margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     color: var(--text);
   }
 
-  h2 { font-size: 1.375rem; }
-  h3 { font-size: 1.125rem; }
+  h2 { font-size: 1.45rem; }
+  h3 { font-size: 1.15rem; }
   h4 { font-size: 1rem; }
 
   p {
@@ -116,6 +117,7 @@
     overflow-x: auto;
     margin-bottom: 1.5rem;
     font-size: 0.875rem;
+    box-shadow: var(--shadow-sm);
   }
 
   code {
@@ -145,10 +147,16 @@
 
   blockquote {
     border-left: 3px solid var(--accent);
-    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: color-mix(in srgb, var(--accent) 5%, var(--bg-secondary));
+    padding: 1rem 1.25rem;
     margin: 2rem 0;
     color: var(--text-muted);
     font-style: italic;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   hr {
@@ -160,6 +168,7 @@
   img {
     border-radius: var(--radius);
     margin: 2rem 0;
+    box-shadow: var(--shadow-md);
   }
 }
 
@@ -188,11 +197,8 @@
 }
 
 .post-related-card {
+  @include card-base;
   padding: 1.1rem 1.25rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: border-color var(--transition), transform var(--transition);
 
   &:hover {
     @include card-hover;
@@ -216,6 +222,7 @@
   a {
     color: var(--text);
     text-decoration: none;
+    transition: color 0.25s var(--ease-out);
   }
 }
 
