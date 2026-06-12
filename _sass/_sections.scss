@@ -3,14 +3,18 @@
 // ============================================================
 
 .section {
-  padding: 5rem 0;
+  padding: 5.5rem 0;
   border-top: 1px solid var(--border);
+
+  @media (max-width: 639px) {
+    padding: 4rem 0;
+  }
 }
 
 .section-title {
-  font-size: 1.4rem;
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   margin-bottom: 2.5rem;
   color: var(--text);
   position: relative;
@@ -21,16 +25,48 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 2rem;
+    width: 2.5rem;
     height: 3px;
     border-radius: 2px;
-    background: var(--section-color, var(--accent));
+    background: linear-gradient(
+      90deg,
+      var(--section-color, var(--accent)),
+      color-mix(in srgb, var(--section-color, var(--accent)) 30%, transparent)
+    );
   }
 }
 
-#about        .section-title { --section-color: var(--c-about); }
-#experience   .section-title { --section-color: var(--c-experience); }
-#speaking     .section-title { --section-color: var(--c-speaking); }
-#skills       .section-title { --section-color: var(--c-skills); }
-#certifications .section-title { --section-color: var(--c-certifications); }
-#community    .section-title { --section-color: var(--c-community); }
+// Section accent colour cascades to titles, cards, timelines, tags
+#about          { --section-color: var(--c-about); }
+#experience     { --section-color: var(--c-experience); }
+#speaking       { --section-color: var(--c-speaking); }
+#blog           { --section-color: var(--c-about); }
+#skills         { --section-color: var(--c-skills); }
+#certifications { --section-color: var(--c-certifications); }
+#community      { --section-color: var(--c-community); }
+
+// ------------------------------------------------------------
+// Scroll reveal — JS adds .reveal, observer adds .is-visible.
+// Without JS no .reveal class exists, so content stays visible.
+// ------------------------------------------------------------
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0s);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

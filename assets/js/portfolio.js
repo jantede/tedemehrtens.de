@@ -211,9 +211,96 @@
     });
   }
 
+  function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    let rafPending = false;
+    function update() {
+      navbar.classList.toggle('scrolled', window.scrollY > 8);
+    }
+
+    window.addEventListener('scroll', () => {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        update();
+        rafPending = false;
+      });
+    }, { passive: true });
+
+    update();
+  }
+
+  function initScrollReveal() {
+    if (reduceMotion.matches || !('IntersectionObserver' in window)) return;
+
+    // Sections (below the hero) reveal as a whole; cards inside grids stagger.
+    const sections = Array.from(document.querySelectorAll('.section'));
+    const staggerSelector = '.post-grid > *, .talk-list > *, .cert-list > *, .timeline > *, .post-related-grid > *';
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+
+    sections.forEach((section) => {
+      const items = Array.from(section.querySelectorAll(staggerSelector));
+
+      if (items.length) {
+        // Reveal the section shell instantly, stagger its items.
+        items.forEach((item, index) => {
+          item.classList.add('reveal');
+          item.style.setProperty('--reveal-delay', `${Math.min(index * 70, 420)}ms`);
+          observer.observe(item);
+        });
+      }
+
+      const title = section.querySelector('.section-title');
+      if (title) {
+        title.classList.add('reveal');
+        observer.observe(title);
+      }
+    });
+  }
+
+  function initScrollSpy() {
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="/#"]'));
+    if (!navLinks.length || !('IntersectionObserver' in window)) return;
+
+    const linkById = new Map();
+    navLinks.forEach((link) => {
+      linkById.set(link.getAttribute('href').slice(2), link);
+    });
+
+    const sections = Array.from(linkById.keys())
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const link = linkById.get(entry.target.id);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach((other) => other.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
   initThemePicker();
   initMouseSpotlight();
   initHeroConstellation();
   initMobileNavigation();
   initYouTubeConsent();
+  initNavbarScroll();
+  initScrollReveal();
+  initScrollSpy();
 })();

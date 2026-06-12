@@ -18,10 +18,27 @@
   color: var(--text-muted);
 }
 
-// Card lift on hover: .post-card, .post-related-card
+// Card base: shared surface for post/talk/cert/related cards.
+// Picks up the section accent via --section-color (set per section).
+@mixin card-base {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition:
+    border-color 0.25s var(--ease-out),
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    background 0.25s var(--ease-out);
+}
+
+// Card lift on hover: accent border, lift, soft shadow + faint accent glow
 @mixin card-hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  border-color: var(--section-color, var(--accent));
+  transform: translateY(-3px);
+  box-shadow:
+    var(--shadow-md),
+    0 0 0 1px color-mix(in srgb, var(--section-color, var(--accent)) 35%, transparent),
+    0 8px 24px -12px color-mix(in srgb, var(--section-color, var(--accent)) 45%, transparent);
 }
 
 // Page sections below the navbar: .page-wrap, .post-page, .posts-page

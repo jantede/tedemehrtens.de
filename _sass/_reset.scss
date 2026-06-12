@@ -41,6 +41,12 @@ a     { color: inherit; }
 img   { max-width: 100%; display: block; }
 button { font-family: inherit; }
 
+// Accent-tinted text selection
+::selection {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  color: var(--text);
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
