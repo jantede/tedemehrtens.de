@@ -132,7 +132,7 @@ A repository that's exactly as big as the backups on it is full. The question is
 is realistic, and a flat percentage alone doesn't answer that well. So the reserve looks at the
 operations that actually eat space and takes whichever is bigger:
 
-```
+```text
 reserve = max(1.1 × Active Full, 10 % of used space)
 ```
 
@@ -175,13 +175,12 @@ My first version didn't, and happily recommended retentions that overflowed in m
 ![The result step with recommendation, breakdown and deviations](/assets/img/retention-fyi/retention-fyi-result.png)
 *The result: recommendation, breakdown per retention type, range while values are estimated, and why other numbers may look different.*
 
-
 I checked the model against 18 Calculator scenarios. Common to all of them: 1 TB source data,
 50 % reduction, 14 dailies and a five-year horizon. "Used" is the space the backups occupy,
 "total" includes the reserve.
 
 | Scenario | Used | Total |
-|---|---:|---:|
+| --- | ---: | ---: |
 | Dailies only, 14 days | 0 % | +1.6 % |
 | 8 weeklies | 0 % | +1.8 % |
 | 4 W · 3 M · 1 Y, Fast Clone, 10 %/year growth | −8.5 % | +3.5 % |
