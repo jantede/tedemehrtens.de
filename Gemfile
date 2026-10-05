@@ -14,7 +14,7 @@ gem "jekyll-sass-converter", "~> 3.0"  # Dart Sass; compiles _sass/ partials
 # gem "github-pages", group: :jekyll_plugins
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.17"
+  gem "jekyll-feed", "~> 0.18"
   gem "jekyll-paginate"
   gem "jekyll-sitemap"
   gem "jekyll-webp"
